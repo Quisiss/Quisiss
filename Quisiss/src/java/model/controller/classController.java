@@ -63,15 +63,11 @@ public class classController {
         return id+1;
     }
     
-    public void createNewClassroom(String className,int ownerId){
-        try{
-            classController cc = new classController();
-            String statement =  "insert into classroom(classid,classname,classcode,ownerid) values (?,?,?,?)";
-            int classid = cc.getNewClassId();
-            int leftLimit = 97; // letter 'a'
-            int rightLimit = 122; // letter 'z'
-            int targetStringLength = 6;
-            Random random = new Random();
+    public String getRandomCode(){
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 6;
+        Random random = new Random();
             StringBuilder buffer = new StringBuilder(targetStringLength);
             for (int i = 0; i < targetStringLength; i++) {
                 int randomLimitedInt = leftLimit + (int) 
@@ -79,6 +75,24 @@ public class classController {
                 buffer.append((char) randomLimitedInt);
             }  
             String classcode = buffer.toString();
+            return classcode;
+    }
+    
+    public void createNewClassroom(String className,int ownerId){
+        try{
+            classController cc = new classController();
+            String statement =  "insert into classroom(classid,classname,classcode,ownerid) values (?,?,?,?)";
+            int classid = cc.getNewClassId();
+            String classcode = null;
+            String preclasscode = cc.getRandomCode();
+            ArrayList<Classroom> c = cc.getAllClassroom();
+            for(int i=0;i<c.size();i++){
+                if(c.get(i).getClassCode()== preclasscode){
+                    preclasscode = cc.getRandomCode();
+                    i--;
+                }
+             }
+            classcode = preclasscode;
             conn = BuildConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(statement);
             ps.setInt(1, classid);
@@ -164,6 +178,6 @@ public class classController {
         }
         System.out.println(cc.getNewClassId());
         //cc.addUserIntoClassroom(c, u);
-        //cc.createNewClassroom("testclass", 5);
+        cc.createNewClassroom("testclass", 5);
     }
 }
