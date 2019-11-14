@@ -12,10 +12,12 @@ import java.sql.Connection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Users;
 
 /**
  *
@@ -37,8 +39,11 @@ EntityManagerFactory emf ;
             throws ServletException, IOException {
         Connection conn = BuildConnection.getConnection();
         EntityManager em = emf.createEntityManager();
-        Class c = em.find(Class.class,1) ;
-        request.setAttribute("class", c);
+        //Query qry = em.createNamedQuery("Class.findByClassid");
+        Users u = em.find(Users.class,1) ;
+        System.out.println("6555555");
+        request.setAttribute("class", u);
+        System.out.println("users"+u);
         getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
     }
 
