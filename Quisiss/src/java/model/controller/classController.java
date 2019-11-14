@@ -1,11 +1,14 @@
 package model.controller;
 
 import database.BuildConnection;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Classroom;
@@ -61,6 +64,32 @@ public class classController {
     }
     
     public void createNewClassroom(String className,int ownerId){
+        try{
+            classController cc = new classController();
+            String statement =  "insert into classroom(classid,classname,classcode,ownerid) values (?,?,?,?)";
+            int classid = cc.getNewClassId();
+            int leftLimit = 97; // letter 'a'
+            int rightLimit = 122; // letter 'z'
+            int targetStringLength = 6;
+            Random random = new Random();
+            StringBuilder buffer = new StringBuilder(targetStringLength);
+            for (int i = 0; i < targetStringLength; i++) {
+                int randomLimitedInt = leftLimit + (int) 
+                  (random.nextFloat() * (rightLimit - leftLimit + 1));
+                buffer.append((char) randomLimitedInt);
+            }  
+            String classcode = buffer.toString();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(statement);
+            ps.setInt(1, classid);
+            ps.setString(2, className);
+            ps.setString(3, classcode);
+            ps.setInt(4, ownerId);
+            ps.executeUpdate();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         classController cc = new classController();
         int classid = cc.getNewClassId();
     }
@@ -134,6 +163,7 @@ public class classController {
            System.out.println(c1.get(i).getClassName()+c1.get(i).getClassCode());
         }
         System.out.println(cc.getNewClassId());
-        cc.addUserIntoClassroom(c, u);
+        //cc.addUserIntoClassroom(c, u);
+        //cc.createNewClassroom("testclass", 5);
     }
 }
