@@ -45,6 +45,18 @@ public class classController {
         return null;
     }
     
+    public void deleteClassById(int classid){
+        try{
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps1 = conn.prepareStatement("delete from classroom where classid = ?");
+            ps1.setInt(1, classid);
+            ps1.executeUpdate();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public int getNewClassId(){
         int id=0;
         try{
@@ -164,11 +176,11 @@ public class classController {
     }
     
     public static void main(String[] args) {
-        Classroom c = new Classroom(1,"test","a1a2a3",2);
+        //Classroom c = new Classroom(1,"test","a1a2a3",2);
         classController cc = new classController();
         System.out.println(cc.getNewClassId());
         Users u = new Users(50,"cheer","test",1,"asdad");
-        //Classroom c = cc.getClassroomById(1);
+        Classroom c = cc.getClassroomById(2);
         System.out.println(c.getOwnerId());
         System.out.println(c.getClassId());
         System.out.println(c.getClassName());
@@ -177,7 +189,8 @@ public class classController {
            System.out.println(c1.get(i).getClassName()+c1.get(i).getClassCode());
         }
         System.out.println(cc.getNewClassId());
-        //cc.addUserIntoClassroom(c, u);
-        cc.createNewClassroom("testclass", 5);
+        cc.addUserIntoClassroom(c, u);
+        //cc.createNewClassroom("testclass", 5);
+        cc.deleteClassById(2);
     }
 }
