@@ -47,10 +47,18 @@ public class classController {
     
     public void deleteClassById(int classid){
         try{
+            classController cc = new classController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps1 = conn.prepareStatement("delete from classroom where classid = ?");
             ps1.setInt(1, classid);
             ps1.executeUpdate();
+            ArrayList<Classroom> classes = cc.getAllClassroom();
+            for (int i = classid; i <= classes.size(); i++) {
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE classroom SET classid = ? WHERE classid = ?");
+                ps2.setInt(1, i);
+                ps2.setInt(2, i+1);
+                ps2.executeUpdate();
+            }
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,11 +182,11 @@ public class classController {
     }
     
     public static void main(String[] args) {
-        //Classroom c = new Classroom(1,"test","a1a2a3",2);
+        //Classroom c = new Classroom(2,"test","a1a2a3",2);
         classController cc = new classController();
         System.out.println(cc.getNewClassId());
-        Users u = new Users(50,"cheer","test",1,"asdad");
-        Classroom c = cc.getClassroomById(3);
+        Users u = new Users(10,"cheer","test",1,"asdad");
+        Classroom c = cc.getClassroomById(5);
         System.out.println(c.getOwnerId());
         System.out.println(c.getClassId());
         System.out.println(c.getClassName());
@@ -187,8 +195,8 @@ public class classController {
            System.out.println(c1.get(i).getClassName()+c1.get(i).getClassCode());
         }
         System.out.println(cc.getNewClassId());
-        cc.addUserIntoClassroom(c, u);
-        //cc.createNewClassroom("testclass", 5);
-        cc.deleteClassById(2);
+        //cc.addUserIntoClassroom(c, u);
+        //cc.createNewClassroom("testclass", 10);
+        //cc.deleteClassById(1);
     }
 }
