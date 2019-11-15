@@ -180,7 +180,7 @@ public class classController {
         classController cc = new classController();
         System.out.println(cc.getNewClassId());
         Users u = new Users(50,"cheer","test",1,"asdad");
-        Classroom c = cc.getClassroomById(2);
+        Classroom c = cc.getClassroomById(3);
         System.out.println(c.getOwnerId());
         System.out.println(c.getClassId());
         System.out.println(c.getClassName());
