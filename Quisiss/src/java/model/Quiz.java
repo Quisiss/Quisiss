@@ -13,13 +13,13 @@ public class Quiz {
     private int classId;
     private int quizId;
     private String quizName;
-    private int quizTine;
+    private int quizTime;
 
-    public Quiz(int classId, int quizId, String quizName, int quizTine) {
+    public Quiz(int classId, int quizId, String quizName, int quizTime) {
         this.classId = classId;
         this.quizId = quizId;
         this.quizName = quizName;
-        this.quizTine = quizTine;
+        this.quizTime = quizTime;
     }
 
     public int getClassId() {
@@ -46,12 +46,13 @@ public class Quiz {
         this.quizName = quizName;
     }
 
-    public int getQuizTine() {
-        return quizTine;
+    public int getQuizTime() {
+        return quizTime;
     }
 
-    public void setQuizTine(int quizTine) {
-        this.quizTine = quizTine;
+    public void setQuizTime(int quizTime) {
+        this.quizTime = quizTime;
     }
+    
     
 }
