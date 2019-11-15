@@ -77,6 +77,28 @@ public class quizController {
             Logger.getLogger(quizController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void deleteQuizById(Classroom c,int quizId){
+        try{
+            quizController qc = new quizController();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps1 = conn.prepareStatement("delete from quiz where classid = ? and quizId = ?");
+            ps1.setInt(1, c.getClassId());
+            ps1.setInt(2, quizId);
+            ps1.executeUpdate();
+            ArrayList<Quiz> quizs = qc.getQuizByClassId(c.getClassId());
+            for (int i = quizId; i <= quizs.size(); i++) {
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE quiz SET quizid = ? WHERE classid = ? and quizId = ?");
+                ps2.setInt(1, i);
+                ps2.setInt(2, c.getClassId());
+                ps2.setInt(3, i+1);
+                ps2.executeUpdate();
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public static void main(String[] args) {
         classController cc = new classController();
@@ -87,6 +109,7 @@ public class quizController {
             System.out.println(quizs.get(i).getClassId() + "---" + quizs.get(i).getQuizId() + "---  " + quizs.get(i).getQuizTime());
         }
         System.out.println(qc.getNewQuizId(c));
-        qc.createNewQuiz(c, "testquiz", 600);
+        //qc.createNewQuiz(c, "testquiz", 600);
+        qc.deleteQuizById(c, 1);
     }
 }
