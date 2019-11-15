@@ -116,8 +116,6 @@ public class classController {
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        classController cc = new classController();
-        int classid = cc.getNewClassId();
     }
     
     public Classroom getClassroomById(int id){
