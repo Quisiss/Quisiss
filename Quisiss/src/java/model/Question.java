@@ -9,13 +9,13 @@ package model;
  *
  * @author Lenovo-Y50
  */
-public class question {
+public class Question {
     private int quizid;
     private int questionid;
     private String question;
     private String answer;
 
-    public question(int quizid, int questionid, String question, String answer) {
+    public Question(int quizid, int questionid, String question, String answer) {
         this.quizid = quizid;
         this.questionid = questionid;
         this.question = question;
