@@ -14,12 +14,22 @@ public class Question {
     private int questionid;
     private String question;
     private String answer;
+    private int classId;
 
-    public Question(int quizid, int questionid, String question, String answer) {
+    public Question(int quizid, int questionid, String question, String answer, int classId) {
         this.quizid = quizid;
         this.questionid = questionid;
         this.question = question;
         this.answer = answer;
+        this.classId = classId;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
     public int getQuizid() {
