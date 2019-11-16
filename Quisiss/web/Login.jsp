@@ -80,7 +80,7 @@ span.psw {
 <form action="Login" method="post">
 
   <div class="container">
-    <label for="username"><b>Student ID</b></label>
+    <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username" required>
 
     <label for="password"><b>Password</b></label>
@@ -94,7 +94,7 @@ span.psw {
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">Forgot <a href="RePassword">password?</a></span>
   </div>
 </form>
 

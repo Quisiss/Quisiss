@@ -11,8 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Student;
-import model.Studentdao;
+import model.Users;
+import model.controller.classController;
+import model.controller.UsersController;
 
 /**
  *
@@ -34,20 +35,22 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        
         if(username.trim().isEmpty()||password.trim().isEmpty()){
             request.setAttribute("message", "Please enter your username and password");
             getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         }
         
-        Studentdao sdao = new Studentdao();
-        Student s = sdao.getStudentByUsername(username);
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersByUsername(username);
         
-        if(s!=null){
-            if(password.equals(s.getPassword())){
-                request.getSession().setAttribute("user", s);
+        if(u!=null){
+            if(password.equals(u.getPassword())){
+                request.getSession().setAttribute("user", u);
                 getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
             }else{
                 request.setAttribute("message", "Password incorrect!");
+                getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
             }
         }
         request.setAttribute("message", "Username or Password Incorrect!");

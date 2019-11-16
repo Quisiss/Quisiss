@@ -7,23 +7,16 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Register;
-import model.Users;
-import model.controller.RegisterController;
-import model.controller.UsersController;
 
 /**
  *
- * @author DB01
+ * @author Acer Nitro
  */
-public class RegisterServlet extends HttpServlet {
+public class TermServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +29,9 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        getServletContext().getRequestDispatcher("/Term.jsp").forward(request, response);
     }
-            
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -66,28 +58,8 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
- 
-        Register rgt = new Register();
- 
-        rgt.setEmail(email);
-        rgt.setUserName(userName);
-        rgt.setPassword(password); 
- 
-        RegisterController rgtc = new RegisterController();
- 
-        String userRegistered = rgtc.registerUser(rgt);
- 
-        if(userRegistered.equals("SUCCESS")){
-            request.getRequestDispatcher("/Home.jsp").forward(request, response);
-        }else{
-            request.setAttribute("errMessage", userRegistered);
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
-    
 
     /**
      * Returns a short description of the servlet.

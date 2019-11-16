@@ -4,9 +4,25 @@
         <servlet-name>createClassServlet</servlet-name>
         <servlet-class>servlet.createClassServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TermServlet</servlet-name>
+        <servlet-class>servlet.TermServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RePasswordServlet</servlet-name>
+        <servlet-class>servlet.RePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClassServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TermServlet</servlet-name>
+        <url-pattern>/Term</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RePasswordServlet</servlet-name>
+        <url-pattern>/RePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
