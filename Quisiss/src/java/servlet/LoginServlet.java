@@ -33,10 +33,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String msg = null;
         
         
         if(username.trim().isEmpty()||password.trim().isEmpty()){
-            request.setAttribute("message", "Please enter your username and password");
+            msg = "Please Enter Your Username or Password";
+            request.setAttribute("msg", msg);
             getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         }
         
@@ -48,11 +50,13 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user", u);
                 getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
             }else{
-                request.setAttribute("message", "Password incorrect!");
+                msg = "Incorrect Password";
+                request.setAttribute("msg", msg);
                 getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
             }
         }
-        request.setAttribute("message", "Username or Password Incorrect!");
+        msg = "No User !!!";
+        request.setAttribute("msg", msg);
         getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
     }
 
