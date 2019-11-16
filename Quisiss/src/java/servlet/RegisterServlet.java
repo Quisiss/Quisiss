@@ -6,17 +6,11 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Register;
 import model.Users;
-import model.controller.RegisterController;
 import model.controller.UsersController;
 
 /**
@@ -36,6 +30,30 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String passwordrepeat = request.getParameter("passwordrepeat");
+        String msg = null;
+        
+        if(email.trim().isEmpty()||username.trim().isEmpty()||password.trim().isEmpty()||passwordrepeat.trim().isEmpty()){
+            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+        }
+        
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersByUsername(username);
+        
+        if(password!=passwordrepeat){
+            msg = "Your repeat password is not same your password";
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+        }else{
+            Users newu = new Users(0, username, password, 0, email);
+            usc.addUser(u);
+            
+            request.getRequestDispatcher("/Register.jsp");
+        }
+        
         
     }
             
@@ -66,26 +84,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
- 
-        Register rgt = new Register();
- 
-        rgt.setEmail(email);
-        rgt.setUserName(userName);
-        rgt.setPassword(password); 
- 
-        RegisterController rgtc = new RegisterController();
- 
-        String userRegistered = rgtc.registerUser(rgt);
- 
-        if(userRegistered.equals("SUCCESS")){
-            request.getRequestDispatcher("/Home.jsp").forward(request, response);
-        }else{
-            request.setAttribute("errMessage", userRegistered);
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
     
 

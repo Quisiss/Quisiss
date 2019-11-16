@@ -57,6 +57,22 @@ public class UsersController {
 
         return null;
     }
+    
+    public boolean addUser(Users u){
+        
+        conn = BuildConnection.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement("insert into users(email, userName, password) values (?,?,?)");
+            ps.setString(1, u.getEmail());
+            ps.setString(2, u.getUserName());
+            ps.setString(3, u.getPassword());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         UsersController usc = new UsersController();
