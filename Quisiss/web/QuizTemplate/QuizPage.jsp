@@ -16,7 +16,7 @@
         <title>JSP Page</title>
         <style>
             body{
-                background-image: url("images/pink_bg.png");
+                background-image: url("../images/pink_bg.png");
                 background-repeat: no-repeat;
                 background-size: 100%
             }
@@ -63,7 +63,8 @@
                             <div class="card-body">
                                 <h3 class="card-title">Quiz</h3>
                             </div>                  
-                        </div>   
+                        </div>  
+                    <!--<h1 style="margin-top: 20px;">Quiz</h1>-->
                     </center>
                 </div>
                 <div class="col col-1"></div>
@@ -78,7 +79,7 @@
                         </div>
                     </div>
                     <div class="card col-2">
-                        <center><img src="images/user.png" class="card-img-top" alt="user" style="width:50%;margin-top: 20px;"></center>
+                        <center><img src="../images/user.png" class="card-img-top" alt="user" style="width:50%;margin-top: 20px;"></center>
                         <div class="card-body">
                             <h5 class="card-title">Username</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
