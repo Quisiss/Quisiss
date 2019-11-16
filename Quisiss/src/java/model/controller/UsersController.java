@@ -62,10 +62,13 @@ public class UsersController {
         
         conn = BuildConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into users(email, userName, password) values (?,?,?)");
-            ps.setString(1, u.getEmail());
+            PreparedStatement ps = conn.prepareStatement("insert into users(userID, userName, password, classID, email) values (0,?,?,0,?)");
+            ps.setInt(1, u.getUserId());
             ps.setString(2, u.getUserName());
             ps.setString(3, u.getPassword());
+            ps.setInt(4, u.getClassID());
+            ps.setString(5, u.getEmail());
+            
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

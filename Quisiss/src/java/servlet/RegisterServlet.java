@@ -6,6 +6,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import model.controller.UsersController;
 
 /**
  *
- * @author DB01
+ * @author Acer Nitro
  */
 public class RegisterServlet extends HttpServlet {
 
@@ -35,29 +36,28 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordrepeat = request.getParameter("passwordrepeat");
         String msg = null;
-        
-        if(email.trim().isEmpty()||username.trim().isEmpty()||password.trim().isEmpty()||passwordrepeat.trim().isEmpty()){
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
-        }
-        
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername(username);
         
-        if(password!=passwordrepeat){
+        if(email.trim().isEmpty()||username.trim().isEmpty()||password.trim().isEmpty()||passwordrepeat.trim().isEmpty()){
+            msg = "Please Insert Info";
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+        }
+        
+        
+        if(passwordrepeat!=password){
             msg = "Your repeat password is not same your password";
             request.setAttribute("msg", msg);
             request.getRequestDispatcher("/Register.jsp").forward(request, response);
         }else{
+        
             Users newu = new Users(0, username, password, 0, email);
-            usc.addUser(u);
-            
+            usc.addUser(newu);
             request.getRequestDispatcher("/Register.jsp");
         }
-        
-        
     }
-            
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -86,7 +86,6 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
 
     /**
      * Returns a short description of the servlet.

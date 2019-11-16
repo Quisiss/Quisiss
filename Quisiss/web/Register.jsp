@@ -79,7 +79,8 @@ a {
 <form action="Register" method="post">
   <div class="container">
     <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p>Please fill in this form to create an account.</p><br>
+    ${msg}
     <hr>
     
     <label for="username"><b>Username</b></label>
@@ -92,11 +93,11 @@ a {
     <input type="password" placeholder="Enter Password" name="password" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="passwordrepeat" required>
+    <input type="password" placeholder="Repeat Password" name="passwordrepeat">
     <hr>
     <p>By creating an account you agree to our <a href="Term">Terms & Privacy</a>.</p>
 
-    <button type="submit" class="registerbtn">Register</button>
+    <input type="submit" class="registerbtn" value="Register">
   </div>
   
   <div class="container signin">
