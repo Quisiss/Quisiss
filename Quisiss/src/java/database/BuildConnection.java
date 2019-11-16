@@ -65,24 +65,6 @@ public class BuildConnection {
         return conn;
     }*/
 
-    public static Connection createConnection(){
-        Connection conn = null;
-    
-        try {
-            try{
-                Class.forName("com.mysql.jdbc.Driver"); 
-            } catch (ClassNotFoundException e){
-                e.printStackTrace();
-            }
- 
-            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Printing connection object "+conn);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-            return conn; 
-    }
-    
     public static void main(String[] args) {
         System.out.println(getConnection());
     }

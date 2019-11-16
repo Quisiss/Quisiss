@@ -62,7 +62,7 @@ public class UsersController {
         
         conn = BuildConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into users(userID, userName, password, classID, email) values (0,?,?,0,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(userID, userName, password, classID, email) values (0,?,?,0,?)");
             ps.setInt(1, u.getUserId());
             ps.setString(2, u.getUserName());
             ps.setString(3, u.getPassword());

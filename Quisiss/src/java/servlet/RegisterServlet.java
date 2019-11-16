@@ -31,30 +31,41 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String userid = request.getParameter("id");
         String email = request.getParameter("email");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String passwordrepeat = request.getParameter("passwordrepeat");
+        String classid = request.getParameter("classid");
         String msg = null;
-        UsersController usc = new UsersController();
-        Users u = usc.findUsersByUsername(username);
+        
         
         if(email.trim().isEmpty()||username.trim().isEmpty()||password.trim().isEmpty()||passwordrepeat.trim().isEmpty()){
             msg = "Please Insert Info";
             request.setAttribute("msg", msg);
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
         }
         
+        int uid = Integer.valueOf(userid);
+        int cid = Integer.valueOf(classid);
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersById(uid);
         
         if(passwordrepeat!=password){
-            msg = "Your repeat password is not same your password";
+            msg = "Your repeat password is not same your password !!!";
             request.setAttribute("msg", msg);
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
-        }else{
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+        }
         
-            Users newu = new Users(0, username, password, 0, email);
+        if(u!=null){
+            msg = "This username already exist!!!";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+        }else{
+            Users newu = new Users(uid, username, password, cid, email);
             usc.addUser(newu);
-            request.getRequestDispatcher("/Register.jsp");
+            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         }
     }
 

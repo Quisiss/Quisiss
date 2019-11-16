@@ -84,13 +84,13 @@ a {
     <hr>
     
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required><br>
+    <input type="text" placeholder="Enter Username" name="username"><br>
     
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required><br>
+    <input type="text" placeholder="Enter Email" name="email"><br>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Enter Password" name="password">
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="passwordrepeat">
