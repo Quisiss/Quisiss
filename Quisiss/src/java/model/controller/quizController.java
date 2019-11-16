@@ -45,6 +45,7 @@ public class quizController {
     public void deleteQuizByClassId(int classid){
         try{
             classController cc = new classController();
+            questionController qc = new questionController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps1 = conn.prepareStatement("delete from quiz where classid = ?");
             ps1.setInt(1, classid);
@@ -52,9 +53,7 @@ public class quizController {
             ArrayList<Classroom> classes = cc.getAllClassroom();
             System.out.println(classes.size());
             for (int i = classid; i <= classes.size(); i++) {
-                System.out.println("66666");
                 PreparedStatement ps2 = conn.prepareStatement("UPDATE quiz SET classid = ? WHERE classid = ?");
-                System.out.println("5555" + 1);
                 ps2.setInt(1, i);
                 ps2.setInt(2, i+1);
                 ps2.executeUpdate();
@@ -104,6 +103,7 @@ public class quizController {
     public void deleteQuizById(Classroom c,int quizId){
         try{
             quizController qc = new quizController();
+            questionController quc = new questionController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps1 = conn.prepareStatement("delete from quiz where classid = ? and quizId = ?");
             ps1.setInt(1, c.getClassId());
@@ -117,6 +117,7 @@ public class quizController {
                 ps2.setInt(3, i+1);
                 ps2.executeUpdate();
             }
+            quc.deleteQuestionByQuizId(quizId, c.getClassId());
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,7 +126,7 @@ public class quizController {
 
     public static void main(String[] args) {
         classController cc = new classController();
-        Classroom c = cc.getClassroomById(3);
+        Classroom c = cc.getClassroomById(2);
         quizController qc = new quizController();
         ArrayList<Quiz> quizs = qc.getQuizByClassId(1);
         for (int i = 0; i < quizs.size(); i++) {

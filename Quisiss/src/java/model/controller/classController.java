@@ -49,6 +49,7 @@ public class classController {
         try{
             quizController qc = new quizController();
             classController cc = new classController();
+            questionController quc = new questionController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps1 = conn.prepareStatement("delete from classroom where classid = ?");
             ps1.setInt(1, classid);
@@ -61,6 +62,7 @@ public class classController {
                 ps2.executeUpdate();
             }
             qc.deleteQuizByClassId(classid);
+            quc.deleteQuestionByClassId(classid);
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
@@ -199,6 +201,6 @@ public class classController {
         System.out.println(cc.getNewClassId());
         //cc.addUserIntoClassroom(c, u);
         //cc.createNewClassroom("testclass", 10);
-        cc.deleteClassById(2);
+        cc.deleteClassById(1);
     }
 }
