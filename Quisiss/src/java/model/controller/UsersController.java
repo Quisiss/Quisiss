@@ -29,7 +29,7 @@ public class UsersController {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return new Users(rs.getInt("id"), rs.getString("userName"), rs.getString("password"), rs.getInt("classID"), rs.getString("email"));
+                return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getInt("classid"), rs.getString("email"));
             }
             rs.close();
             conn.close();
@@ -47,7 +47,7 @@ public class UsersController {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return new Users(rs.getInt("id"), rs.getString("userName"), rs.getString("password"), rs.getInt("classID"), rs.getString("email"));
+                return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getInt("classid"), rs.getString("email"));
             }
             rs.close();
             conn.close();
@@ -62,12 +62,11 @@ public class UsersController {
         
         conn = BuildConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(userID, userName, password, classID, email) values (0,?,?,0,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(userid, username, password, email) values (0,?,?,?)");
             ps.setInt(1, u.getUserId());
             ps.setString(2, u.getUserName());
             ps.setString(3, u.getPassword());
-            ps.setInt(4, u.getClassID());
-            ps.setString(5, u.getEmail());
+            ps.setString(4, u.getEmail());
             
             ps.executeUpdate();
             return true;

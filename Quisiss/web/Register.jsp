@@ -93,7 +93,7 @@ a {
     <input type="password" placeholder="Enter Password" name="password">
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="passwordrepeat">
+    <input type="password" placeholder="Repeat Password" name="cfpassword">
     <hr>
     <p>By creating an account you agree to our <a href="Term">Terms & Privacy</a>.</p>
 
