@@ -23,6 +23,22 @@ import model.Question;
 public class questionController {
     Connection conn = BuildConnection.getConnection();
     
+    public void getQuestionById(Quiz q,int questionid){
+        try{
+            classController cc = new classController();
+            quizController qc = new quizController();
+            questionController quc = new questionController();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from question where classid = ? and quizid = ? and questionid = ?");
+            ps.setInt(1, q.getClassId());
+            ps.setInt(2, q.getQuizId());
+            ps.setInt(3, questionid);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(questionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public int getNewQuestionId(int quizId,int classId) {
         int id = 0;
         try {
