@@ -25,8 +25,8 @@ public class UsersController {
     public Users findUsersByUsername(String username) {
         try {
             conn = BuildConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
-            ps.setString(1, username);
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE lower(username) = ?");
+            ps.setString(1, username.toLowerCase());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getInt("classid"), rs.getString("email"));
@@ -62,11 +62,11 @@ public class UsersController {
         
         conn = BuildConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(userid, username, password, email) values (0,?,?,?)");
-            ps.setInt(1, u.getUserId());
-            ps.setString(2, u.getUserName());
-            ps.setString(3, u.getPassword());
-            ps.setString(4, u.getEmail());
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(username, password, email) values (?,?,?)");
+            
+            ps.setString(1, u.getUserName());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getEmail());
             
             ps.executeUpdate();
             return true;
@@ -78,7 +78,7 @@ public class UsersController {
 
     public static void main(String[] args) {
         UsersController usc = new UsersController();
-        Users u = usc.findUsersById(1);
+        Users u = usc.findUsersByUsername("alan");
         System.out.println(u);
     }
 }

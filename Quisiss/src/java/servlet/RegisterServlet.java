@@ -33,54 +33,53 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String userid = request.getParameter("id");
+
         String email = request.getParameter("email");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String cfpassword = request.getParameter("cfpassword");
+//        String classid = request.getParameter("classid");
         String msg = null;
-        
-        
-        if(email.trim().isEmpty()||username.trim().isEmpty()||password.trim().isEmpty()||cfpassword.trim().isEmpty()){
+
+        if (email.trim().isEmpty() || username.trim().isEmpty() || password.trim().isEmpty() || cfpassword.trim().isEmpty()) {
             msg = "Please Insert Info";
             request.setAttribute("msg", msg);
             getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
         }
-        
-        int uid = Integer.valueOf(userid);
-        
+
+//      
         UsersController usc = new UsersController();
-        Users u = usc.findUsersById(uid);
-        
-        if(password.equals(cfpassword)){
-            try{
-                Users newu = new Users();
-                newu.setUserId(uid);
-                newu.setUserName(username);
-                newu.setPassword(password);
-                newu.setEmail(email);
+        Users u = usc.findUsersByUsername(username);
+
+        if (u != null) {
+            msg = "This username already exist!!!";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+        } else {
+
+            if (password.equals(cfpassword)) {
+//            try{
+//                Users newu = new Users();
+//                newu.setUserId(uid);
+//                newu.setUserName(username);
+//                newu.setPassword(password);
+//                newu.setEmail(email);
+//                usc.addUser(newu);
+//            }catch(Exception ex){
+//                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            response.sendRedirect("Login");
+//            return;
+//        }else{
+                Users newu = new Users(username, password, email);
                 usc.addUser(newu);
-            }catch(Exception ex){
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
             }
-            response.sendRedirect("Login");
-            return;
-        }else{
             msg = "Password not same !!!";
             request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
         }
         getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
-        
-//        if(u!=null){
-//            msg = "This username already exist!!!";
-//            request.setAttribute("msg", msg);
-//            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
-//        }else{
-//            Users newu = new Users(uid, username, password, cid, email);
-//            usc.addUser(newu);
-//            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
