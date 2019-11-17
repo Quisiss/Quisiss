@@ -23,7 +23,7 @@ import model.Question;
 public class questionController {
     Connection conn = BuildConnection.getConnection();
     
-    public void getQuestionById(Quiz q,int questionid){
+    public Question getQuestionById(Quiz q,int questionid){
         try{
             classController cc = new classController();
             quizController qc = new quizController();
@@ -33,10 +33,16 @@ public class questionController {
             ps.setInt(1, q.getClassId());
             ps.setInt(2, q.getQuizId());
             ps.setInt(3, questionid);
-            ps.executeUpdate();
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+               return new Question(rs.getInt("quizid"),rs.getInt("questionid"),rs.getString("question"),rs.getString("answer"),rs.getInt("classid"));
+            }
+            rs.close();
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(questionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
     
     public int getNewQuestionId(int quizId,int classId) {
@@ -187,11 +193,21 @@ public class questionController {
     }
     
     public static void main(String[] args) {
+        classController cc = new classController();
         questionController qc = new questionController();
+        quizController q = new quizController();
+        Classroom c = cc.getClassroomById(2);
+        System.out.println(c.getClassId());
+        Quiz qq = q.getQuizById(c, 2);
+        System.out.println(qq);
+        System.out.println(qq.getClassId());
         //qc.deleteQuestionByQuizId(1, 1);
         //qc.deleteQuestionByClassId(3);
         //qc.createNewQuestion(1, "questionaddtest1", "d",1);
-        qc.deleteQuestionById(1, 1, 1);
+        //qc.deleteQuestionById(1, 1, 1);
+        Question ques = qc.getQuestionById(qq, 2);
+        System.out.println(ques.getQuestionid());
+        System.out.println(ques.getQuestion());
         //System.out.println(qc.getNewQuestionId(1)); 
         //System.out.println(qc.getQuestionByQuizId(1,2));
         //System.out.println(qc.getAnswerByQuizId(1,1));
