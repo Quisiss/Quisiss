@@ -23,7 +23,28 @@ import model.Quiz;
 public class quizController {
 
     Connection conn = null;
-
+    
+    public Quiz getQuizById(Classroom c,int quizid){
+        try{
+            classController cc = new classController();
+            quizController qc = new quizController();
+            questionController quc = new questionController();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from quiz where classid = ? and quizid = ?");
+            ps.setInt(1, c.getClassId());
+            ps.setInt(2, quizid);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+               return new Quiz(rs.getInt("classid"),rs.getInt("quizid"),rs.getString("quizname"),rs.getInt("quizTime"));
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(questionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public ArrayList<Quiz> getQuizByClassId(int id) {
         ArrayList<Quiz> quizs = new ArrayList();
         try {
@@ -133,7 +154,12 @@ public class quizController {
             System.out.println(quizs.get(i).getClassId() + "---" + quizs.get(i).getQuizId() + "---  " + quizs.get(i).getQuizTime());
         }
         System.out.println(qc.getNewQuizId(c));
-        qc.createNewQuiz(c, "testquiz", 600);
+        /*Quiz q = qc.getQuizById(c, 2);
+        System.out.println(q.getClassId());
+        System.out.println(q.getQuizId());
+        System.out.println(q.getQuizName());
+        System.out.println(q.getQuizTime());*/
+        qc.createNewQuiz(c, "testquiz2", 600);
         //qc.deleteQuizById(c, 1);
         //qc.deleteQuizByClassId(2);
     }
