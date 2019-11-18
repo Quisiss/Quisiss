@@ -21,9 +21,11 @@
                 background-color: #ff1a75;
             }
             body{
-                background-image: url("images/pink_bg.png");
+                background-image: linear-gradient(to right top, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
+                /*background: linear-gradient(to top right, #ef1c98 0%, #f9f871 100%);*/
                 background-repeat: no-repeat;
-                background-size: 100%;
+                height: 100vh;
+
             }
         </style>
     </head>
