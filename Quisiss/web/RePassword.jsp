@@ -9,16 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Show Password</title>
     </head>
     <body>
-        <h1>Re-Password</h1>
+        <h1>Show Your Password</h1>
+        ${msg}<br><br>
         <form action="RePassword" method="post">
-        Email : <input type="text" placeholder="Enter Email" name="email">
+        Username : <input type="text" placeholder="Enter Username" name="username">
         <input type="submit">
         </form>
-        <h2>We will send a link to reset password in your email</h2>
-        <a href="Login">Back to Login</a>
+        <br><br>
+        Your Password : ${password}<br><br>
+        <a href="Login.jsp">Back to Login</a>
         
     </body>
 </html>

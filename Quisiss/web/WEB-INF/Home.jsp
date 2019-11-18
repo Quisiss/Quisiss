@@ -39,13 +39,14 @@ li a:hover {
 <ul>
   <li><a class="active" href="Exam">Exam</a></li>
   <li><a href="Profile">Profile</a></li>
-  <li><a href="Contact">Contact</a></li>
+  <li><a href="CreateQuiz">Create Quiz</a></li>
 </ul>
     <h1>Home</h1>
     <h2>Welcome : ${user.userName}</h2>
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
     <hr>
+    <a href="Logout">Logout</a>
 </body>
 </html>
 
