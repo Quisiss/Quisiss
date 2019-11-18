@@ -91,8 +91,8 @@ ${msg}<br>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn"><a href="Register.jsp">Register</a></button>
-    <span class="psw"><a href="RePassword.jsp">Forgot Password?</a></span>
+      <button type="button" class="cancelbtn"><a href="Register">Register</a></button>
+    <span class="psw"><a href="RePassword">Forgot Password?</a></span>
   </div>
 </form>
 

@@ -49,11 +49,11 @@ li a:hover {
     ${msg}<br>
     <hr>
     <form action="EditProfile" method="post">
-        Change Username : <input type="text" name="username">
-        Change Password : <input type="text" name="password">
-        Confirm Password : <input type="text" name="cfpassword">
-        Change Email : <input type="text" name="email">
-        <input type="submit" value="Change Info">
+        Change Username : <input type="text" name="username"><br><br>
+            Change Password : <input type="password" name="password"><br><br>
+            Confirm Password : <input type="password" name="cfpassword"><br><br>
+            Change Email : <input type="text" name="email"><br><br>
+            <input type="submit" value="Change Info"><br><br>
     </form>
     <button><a href="Profile">Back to Profile</a></button>
     </body>

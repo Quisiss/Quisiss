@@ -20,7 +20,7 @@
         </form>
         <br><br>
         Your Password : ${password}<br><br>
-        <a href="Login.jsp">Back to Login</a>
+        <a href="Login">Back to Login</a>
         
     </body>
 </html>

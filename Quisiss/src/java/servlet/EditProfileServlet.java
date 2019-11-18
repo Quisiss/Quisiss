@@ -36,42 +36,48 @@ public class EditProfileServlet extends HttpServlet {
         String cfpassword = request.getParameter("cfpassword");
         String email = request.getParameter("email");
         String msg = null;
-        
-        if(username.trim().isEmpty()||password.trim().isEmpty()||cfpassword.trim().isEmpty()||email.trim().isEmpty()){
+
+        if (username.trim().isEmpty() || password.trim().isEmpty() || cfpassword.trim().isEmpty() || email.trim().isEmpty()) {
             msg = "Please Insert Your Info";
             request.setAttribute("msg", msg);
             getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
         }
-        
+
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername(username);
-        
-        if(u!=null){
-            if(username.equals(u.getUserName())){
-                 msg = "This username already exists !!!";
-                 request.setAttribute("msg", msg);
-                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-            }else{
-                 u.setUserName(u.getUserName());
-                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+
+        if (u != null) {
+            if (username.equals(u.getUserName())) {
+                msg = "This username already exists !!!";
+                request.setAttribute("msg", msg);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            } else {
+                u.setUserName(u.getUserName());
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             }
-                if(password.equals(cfpassword)){
-                    u.setPassword(password);
-                }else{
-                    msg = "Password Not Same !!!";
-                    request.setAttribute("msg", msg);
-                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-                }
-                    if(email.equals(u.getEmail())){
-                        msg = "This email already exists !!!";
-                        request.setAttribute("msg", msg);
-                        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-                    }else{
-                        u.setEmail(u.getEmail());
-                        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-                    }   
+
+            if (password.equals(cfpassword)) {
+                u.setPassword(password);
+            } else {
+                msg = "Password Not Same !!!";
+                request.setAttribute("msg", msg);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            }
+
+            if (email.equals(u.getEmail())) {
+                msg = "This email already exists !!!";
+                request.setAttribute("msg", msg);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            } else {
+                u.setEmail(u.getEmail());
+                usc.addUser(u);
+                msg = "Change Profile Complete";
+                request.setAttribute("msg", msg);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            }
+
         }
-        
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,7 +92,8 @@ public class EditProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+        //processRequest(request, response);
     }
 
     /**

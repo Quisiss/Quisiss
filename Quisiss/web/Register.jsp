@@ -101,7 +101,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Already have an account? <a href="Login.jsp">Sign in</a>.</p>
+    <p>Already have an account? <a href="Login">Sign in</a>.</p>
   </div>
 </form>
 
