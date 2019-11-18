@@ -37,12 +37,14 @@ li a:hover {
 <body>
 
 <ul>
-  <li><a class="active" href="DoExam">Exam</a></li>
+  <li><a class="active" href="Exam">Exam</a></li>
   <li><a href="Profile">Profile</a></li>
   <li><a href="Contact">Contact</a></li>
 </ul>
     <h1>Home</h1>
-    <h2>Welcome : ${user.username}</h2>
+    <h2>Welcome : ${user.userName}</h2>
+    <h3>Your ID : ${user.userId}</h3>
+    <h3>Your Email : ${user.email}</h3>
     <hr>
 </body>
 </html>
