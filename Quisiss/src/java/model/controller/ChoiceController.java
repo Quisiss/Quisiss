@@ -65,14 +65,67 @@ public class ChoiceController {
         }
     }
     
+    public void deleteChoiceByClassId(int classid){
+        try{
+            classController cc = new classController();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("delete from choice where classid = ? ");
+            ps.setInt(1, classid);
+            ps.executeUpdate();
+            ArrayList<Classroom> classes = cc.getAllClassroom();
+            for (int i = classid; i <= classes.size(); i++) {
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE choice SET classid = ? WHERE classid = ?");
+                ps2.setInt(1, i);
+                ps2.setInt(2, i+1);
+                ps2.executeUpdate();
+            }
+            conn.close();  
+        } catch (SQLException ex) {
+            Logger.getLogger(ChoiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteChoiceByQuizId(Quiz q){
+        try{
+            quizController qc = new quizController();
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("delete from choice where classid = ? and quizid = ?");
+            ps.setInt(1, q.getClassId());
+            ps.setInt(2, q.getQuizId());
+            ps.executeUpdate();
+            ArrayList<Quiz> quizs = qc.getQuizByClassId(q.getClassId());
+            for (int i = q.getQuizId(); i <= quizs.size(); i++) {
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE choice SET quizid = ? WHERE quizid = ? and classid = ?");
+                ps2.setInt(1, i);
+                ps2.setInt(2, i+1);
+                ps2.setInt(3,q.getClassId());
+                ps2.executeUpdate();
+            }
+            conn.close();  
+        } catch (SQLException ex) {
+            Logger.getLogger(ChoiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void deleteChoiceByQuestionId(Question q){
         try{
+            questionController qc = new questionController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement("delete from choice where classid = ? and quizid = ? and questionid = ?");
             ps.setInt(1, q.getClassId());
             ps.setInt(2, q.getQuizid());
             ps.setInt(3, q.getQuestionid());
             ps.executeUpdate();
+            ArrayList<Question> questions = qc.getQuestionByQuizId(q.getClassId(), q.getQuizid());
+            for (int i = q.getQuestionid(); i <= questions.size(); i++) {
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE choice SET questionid = ? WHERE questionid = ? and quizid = ? and classid = ?");
+                ps2.setInt(1, i);
+                ps2.setInt(2, i+1);
+                ps2.setInt(3,q.getQuizid());
+                ps2.setInt(4, q.getClassId());
+                ps2.executeUpdate();
+            }
+            conn.close();  
         } catch (SQLException ex) {
             Logger.getLogger(ChoiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,15 +188,16 @@ public class ChoiceController {
         questionController qc = new questionController();
         quizController q = new quizController();
         Classroom c = cc.getClassroomById(2);
-        Quiz qq = q.getQuizById(c, 2);
-        Question ques = qc.getQuestionById(qq, 2);
-//        chc.addNewChoice(ques, "a", "wtf");
-//        chc.addNewChoice(ques, "b", "is");
-//        chc.addNewChoice(ques, "c", "this");
-        ArrayList<Choice> c1 = chc.getChoiceByQuestionId(ques);;
+        Quiz qq = q.getQuizById(c, 1);
+        Question ques = qc.getQuestionById(qq, 1);
+        chc.addNewChoice(ques, "a", "wtf1");
+        chc.addNewChoice(ques, "b", "is1");
+        chc.addNewChoice(ques, "c", "this1");
+        ArrayList<Choice> c1 = chc.getChoiceByQuestionId(ques);
         for (int i = 0; i < c1.size(); i++) {
             System.out.println(c1.get(i).getChoiceId() + c1.get(i).getChoice());
         }
-        chc.deleteChoiceById(ques, "a");
+        //chc.deleteChoiceById(ques, "a");
+        //chc.deleteChoiceByQuestionId(ques);
     }
 }
