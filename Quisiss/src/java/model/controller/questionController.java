@@ -167,6 +167,7 @@ public class questionController {
     
     public void deleteQuestionById(int classid,int quizid,int questionid){
         try{
+            int questionid1 = questionid;
             classController cc = new classController();
             quizController qc = new quizController();
             questionController quc = new questionController();
@@ -179,9 +180,11 @@ public class questionController {
             ps.executeUpdate();
             ArrayList<Question> question = quc.getQuestionByQuizId(classid, quizid);
             if(question.size()<=0){
+                System.out.println("5555");
                 Classroom c = cc.getClassroomById(classid);
                 qc.deleteQuizById(c, quizid);
             }else{
+                System.out.println("66666");
                 for (int i = questionid; i <= question.size(); i++) {
                     PreparedStatement ps2 = conn.prepareStatement("UPDATE question SET questionid = ? WHERE questionid = ?");
                     ps2.setInt(1, i);
@@ -189,7 +192,9 @@ public class questionController {
                     ps2.executeUpdate();
                 }
             }
-            classc.deleteChoiceByQuestionId(quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid));
+            System.out.println("77777");
+            System.out.println("55555" + quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid1));
+            classc.deleteChoiceByQuestionId(quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid1));
         } catch (SQLException ex) {
             Logger.getLogger(questionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -201,16 +206,16 @@ public class questionController {
         quizController q = new quizController();
         Classroom c = cc.getClassroomById(2);
         System.out.println(c.getClassId());
-        Quiz qq = q.getQuizById(c, 2);
-        System.out.println(qq);
-        System.out.println(qq.getClassId());
+//        Quiz qq = q.getQuizById(c, 2);
+//        System.out.println(qq);
+//        System.out.println(qq.getClassId());
         //qc.deleteQuestionByQuizId(1, 1);
         //qc.deleteQuestionByClassId(3);
-        //qc.createNewQuestion(1, "questionaddtest1", "d",1);
-        //qc.deleteQuestionById(1, 1, 1);
-        Question ques = qc.getQuestionById(qq, 2);
-        System.out.println(ques.getQuestionid());
-        System.out.println(ques.getQuestion());
+        qc.createNewQuestion(2, "questionaddtest1", "d",2);
+        //qc.deleteQuestionById(2, 2, 1);
+//        Question ques = qc.getQuestionById(qq, 2);
+//        System.out.println(ques.getQuestionid());
+//        System.out.println(ques.getQuestion());
         //System.out.println(qc.getNewQuestionId(1)); 
         //System.out.println(qc.getQuestionByQuizId(1,2));
         //System.out.println(qc.getAnswerByQuizId(1,1));

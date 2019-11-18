@@ -125,6 +125,7 @@ public class quizController {
         try{
             quizController qc = new quizController();
             questionController quc = new questionController();
+            ChoiceController cc = new ChoiceController();
             conn = BuildConnection.getConnection();
             PreparedStatement ps1 = conn.prepareStatement("delete from quiz where classid = ? and quizId = ?");
             ps1.setInt(1, c.getClassId());
@@ -139,6 +140,7 @@ public class quizController {
                 ps2.executeUpdate();
             }
             quc.deleteQuestionByQuizId(quizId, c.getClassId());
+            cc.deleteChoiceByQuizId(qc.getQuizById(c, quizId));
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
@@ -147,7 +149,7 @@ public class quizController {
 
     public static void main(String[] args) {
         classController cc = new classController();
-        Classroom c = cc.getClassroomById(2);
+        Classroom c = cc.getClassroomById(1);
         quizController qc = new quizController();
         ArrayList<Quiz> quizs = qc.getQuizByClassId(1);
         for (int i = 0; i < quizs.size(); i++) {
@@ -159,8 +161,8 @@ public class quizController {
         System.out.println(q.getQuizId());
         System.out.println(q.getQuizName());
         System.out.println(q.getQuizTime());*/
-        qc.createNewQuiz(c, "testquiz2", 600);
-        //qc.deleteQuizById(c, 1);
+        //qc.createNewQuiz(c, "testquiz2", 600);
+        //qc.deleteQuizById(c, 2);
         //qc.deleteQuizByClassId(2);
     }
 }
