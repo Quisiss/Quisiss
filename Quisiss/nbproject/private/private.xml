@@ -5,7 +5,12 @@
         <group>
             <file>file:/D:/Quisiss/Quisiss/src/java/model/controller/classController.java</file>
             <file>file:/D:/Quisiss/Quisiss/src/java/model/controller/questionController.java</file>
+            <file>file:/D:/Quisiss/Quisiss/src/java/model/Quiz.java</file>
+            <file>file:/D:/Quisiss/Quisiss/src/java/model/controller/quizController.java</file>
+            <file>file:/D:/Quisiss/Quisiss/src/java/model/Question.java</file>
             <file>file:/D:/Quisiss/Quisiss/src/java/model/Users.java</file>
+            <file>file:/D:/Quisiss/Quisiss/src/java/model/Choice.java</file>
+            <file>file:/D:/Quisiss/Quisiss/src/java/model/controller/ChoiceController.java</file>
         </group>
     </open-files>
 </project-private>
