@@ -25,6 +25,7 @@
                 /*background: linear-gradient(to top right, #ef1c98 0%, #f9f871 100%);*/
                 background-repeat: no-repeat;
                 height: 100vh;
+            }
         </style>
     </head>
     <body>
