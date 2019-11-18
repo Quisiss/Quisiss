@@ -97,7 +97,7 @@ a {
     <hr>
     <p>By creating an account you agree to our <a href="Term">Terms & Privacy</a>.</p>
 
-    <input type="submit" class="registerbtn" value="Register">
+    <a href="RegisterSuccess.jsp"><input type="submit" class="registerbtn" value="Register"></a>
   </div>
   
   <div class="container signin">

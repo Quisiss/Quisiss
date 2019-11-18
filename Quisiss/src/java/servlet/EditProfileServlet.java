@@ -7,8 +7,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import model.controller.UsersController;
  *
  * @author Acer Nitro
  */
-public class RegisterServlet extends HttpServlet {
+public class EditProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,53 +31,47 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String cfpassword = request.getParameter("cfpassword");
-//        String classid = request.getParameter("classid");
+        String email = request.getParameter("email");
         String msg = null;
-
-        if (email.trim().isEmpty() || username.trim().isEmpty() || password.trim().isEmpty() || cfpassword.trim().isEmpty()) {
-            msg = "Please Insert Info";
+        
+        if(username.trim().isEmpty()||password.trim().isEmpty()||cfpassword.trim().isEmpty()||email.trim().isEmpty()){
+            msg = "Please Insert Your Info";
             request.setAttribute("msg", msg);
-            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
         }
-
-//      
+        
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername(username);
-
-        if (u != null) {
-            msg = "This username already exist!!!";
-            request.setAttribute("msg", msg);
-            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
-        } else {
-
-            if (password.equals(cfpassword)) {
-//            try{
-//                Users newu = new Users();
-//                newu.setUserId(uid);
-//                newu.setUserName(username);
-//                newu.setPassword(password);
-//                newu.setEmail(email);
-//                usc.addUser(newu);
-//            }catch(Exception ex){
-//                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            response.sendRedirect("Login");
-//            return;
-//        }else{
-                Users newu = new Users(username, password, email);
-                usc.addUser(newu);
-                getServletContext().getRequestDispatcher("/RegisterSuccess.jsp").forward(request, response);
+        
+        if(u!=null){
+            if(username.equals(u.getUserName())){
+                 msg = "This username already exists !!!";
+                 request.setAttribute("msg", msg);
+                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            }else{
+                 u.setUserName(u.getUserName());
+                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             }
-            msg = "Password not same !!!";
-            request.setAttribute("msg", msg);
-            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+                if(password.equals(cfpassword)){
+                    u.setPassword(password);
+                }else{
+                    msg = "Password Not Same !!!";
+                    request.setAttribute("msg", msg);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                }
+                    if(email.equals(u.getEmail())){
+                        msg = "This email already exists !!!";
+                        request.setAttribute("msg", msg);
+                        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                    }else{
+                        u.setEmail(u.getEmail());
+                        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                    }   
         }
-        getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

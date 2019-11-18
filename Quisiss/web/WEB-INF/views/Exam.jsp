@@ -47,6 +47,6 @@ li a:hover {
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
     <hr>
-    <a href="Home">Back to Home</a>
+    <button type="button"><a href="Home">Back to Home</a></button>
     </body>
 </html>

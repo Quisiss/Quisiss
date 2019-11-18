@@ -46,7 +46,7 @@ li a:hover {
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
     <hr>
-    <a href="Logout">Logout</a>
+    <button type="button"><a href="Logout">Logout</a></button>
 </body>
 </html>
 

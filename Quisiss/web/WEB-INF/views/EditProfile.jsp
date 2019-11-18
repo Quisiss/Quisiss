@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Profile
-    Created on : Nov 18, 2019, 2:21:36 PM
+    Document   : EditProfile
+    Created on : Nov 18, 2019, 4:23:42 PM
     Author     : Acer Nitro
 --%>
 
@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Profile Page</title>
-<style>
+        <title>Edit Profile</title>
+    <style>
 ul {
   list-style-type: none;
   margin: 0;
@@ -42,12 +42,19 @@ li a:hover {
   <li><a href="Profile">Profile</a></li>
   <li><a href="CreateQuiz">Create Quiz</a></li>
 </ul>
-    <h1>Profile</h1>
+    <h1>Edit Profile</h1>
     <h2>Welcome : ${user.userName}</h2>
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
+    ${msg}<br>
     <hr>
-    <button type="button"><a href="EditProfile">Edit Profile</a></button>
-    <button type="button"><a href="Home">Back to Home</a></button>
+    <form action="EditProfile" method="post">
+        Change Username : <input type="text" name="username">
+        Change Password : <input type="text" name="password">
+        Confirm Password : <input type="text" name="cfpassword">
+        Change Email : <input type="text" name="email">
+        <input type="submit" value="Change Info">
+    </form>
+    <button><a href="Profile">Back to Profile</a></button>
     </body>
 </html>
