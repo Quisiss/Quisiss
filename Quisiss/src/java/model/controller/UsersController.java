@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.registry.infomodel.User;
 import model.Users;
 
 /**
@@ -75,10 +74,29 @@ public class UsersController {
         }
         return false;
     }
+    
+    public boolean updateUser(Users u){
+        
+        conn = BuildConnection.getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("UPDATE users SET password = ?, email = ? WHERE username = ?");
+            ps.setString(1, u.getPassword());
+            ps.setString(2, u.getEmail());
+            ps.setString(3, u.getUserName());
+            ps.executeUpdate();
+            return true;
+        }catch (SQLException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        return false;
+    }
 
     public static void main(String[] args) {
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername("alan");
-        System.out.println(u);
+        u.setPassword("1");
+        usc.updateUser(u);
+        System.out.println(u.toString());
     }
 }

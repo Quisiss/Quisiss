@@ -70,7 +70,7 @@ public class EditProfileServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             } else {
                 u.setEmail(u.getEmail());
-                usc.addUser(u);
+                usc.updateUser(u);
                 msg = "Change Profile Complete";
                 request.setAttribute("msg", msg);
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
