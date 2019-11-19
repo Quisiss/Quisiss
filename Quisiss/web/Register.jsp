@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8">
-                    <div class="card justify-content-center" >
+                    <div class="card justify-content-center" style="margin-top:20px;">
                     <div class="card-body">
                         <div class="col-12 justify-content-center">
                             <form action="Register" method="post">
