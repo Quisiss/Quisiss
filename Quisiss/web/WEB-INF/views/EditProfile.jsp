@@ -77,15 +77,11 @@
                                 <hr>
                                 <form action="EditProfile" method="post">
                                     <div class="form-group">
-                                        <label for="email"><b>Change Email</b></label>
-                                        <input type="email" class="form-control" placeholder="Email" name="email">
-                                    </div>
-                                    <div class="form-group">
                                         <label for="username"><b>Change Username</b></label>
                                         <input type="text" class="form-control" placeholder="Username" name="username">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password"><b>Change Password</b></label>
+                                        <label for="password"><b>Password</b></label>
                                         <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <div class="form-group">

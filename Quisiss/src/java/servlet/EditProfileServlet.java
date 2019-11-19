@@ -33,11 +33,9 @@ public class EditProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String cfpassword = request.getParameter("cfpassword");
-        String email = request.getParameter("email");
         String msg = null;
 
-        if (username.trim().isEmpty() || password.trim().isEmpty() || cfpassword.trim().isEmpty() || email.trim().isEmpty()) {
+        if (username.trim().isEmpty() || password.trim().isEmpty()) {
             msg = "Please Insert Your Info";
             request.setAttribute("msg", msg);
             getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
@@ -51,35 +49,23 @@ public class EditProfileServlet extends HttpServlet {
                 msg = "This username already exists !!!";
                 request.setAttribute("msg", msg);
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-            } else {
-                u.setUserName(u.getUserName());
-                usc.updateUser(u);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            }else{
+                if (password.equals(u.getPassword())) {
+                    u.setUserName(u.getUserName());
+                    usc.setUsername(u);
+                    msg = "Update Username Complete";
+                    request.setAttribute("msg", msg);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                } else {
+                    msg = "Password Not Same !!!";
+                    request.setAttribute("msg", msg);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                }
             }
-
-            if (password.equals(cfpassword)) {
-                u.setPassword(u.getPassword());
-                usc.updateUser(u);
-            } else {
-                msg = "Password Not Same !!!";
-                request.setAttribute("msg", msg);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-            }
-
-            if (email.equals(u.getEmail())) {
-                msg = "This email already exists !!!";
-                request.setAttribute("msg", msg);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-            } else {
-                u.setEmail(u.getEmail());
-                usc.updateUser(u);
-                msg = "Change Profile Complete";
-                request.setAttribute("msg", msg);
-            getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
-            }
-            
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);    
+        msg = "Cannot Update Username";
+        request.setAttribute("msg", msg);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

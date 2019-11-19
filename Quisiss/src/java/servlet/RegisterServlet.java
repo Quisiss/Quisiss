@@ -58,6 +58,7 @@ public class RegisterServlet extends HttpServlet {
         } else {
 
             if (password.equals(cfpassword)) {
+                
 //            try{
 //                Users newu = new Users();
 //                newu.setUserId(uid);
@@ -81,6 +82,7 @@ public class RegisterServlet extends HttpServlet {
         }
         getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
     }
+        
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

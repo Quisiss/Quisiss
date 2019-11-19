@@ -75,14 +75,29 @@ public class UsersController {
         return false;
     }
     
-    public boolean updateUser(Users u){
+    public boolean setPassword(Users u){
         
         conn = BuildConnection.getConnection();
         try{
-            PreparedStatement ps = conn.prepareStatement("UPDATE users SET password = ?, email = ? WHERE username = ?");
+            PreparedStatement ps = conn.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
             ps.setString(1, u.getPassword());
-            ps.setString(2, u.getEmail());
-            ps.setString(3, u.getUserName());
+            ps.setString(2, u.getUserName());
+            ps.executeUpdate();
+            return true;
+        }catch (SQLException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        return false;
+    }
+    
+    public boolean setUsername(Users u){
+        
+        conn = BuildConnection.getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("UPDATE users SET username = ? WHERE userid = ?");
+            ps.setString(1, u.getUserName());
+            ps.setInt(2, u.getUserId());
             ps.executeUpdate();
             return true;
         }catch (SQLException ex) {
@@ -94,9 +109,10 @@ public class UsersController {
 
     public static void main(String[] args) {
         UsersController usc = new UsersController();
-        Users u = usc.findUsersByUsername("alan");
-        u.setPassword("1234");
-        usc.updateUser(u);
+        Users u = usc.findUsersByUsername("steve");
+        u.setUserName("steve1");
+        //u.setPassword("1234");
+        usc.setUsername(u);
         System.out.println(u.toString());
     }
 }
