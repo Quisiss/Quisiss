@@ -41,8 +41,12 @@
         <servlet-class>servlet.CreateQuizServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditProfileServlet</servlet-name>
-        <servlet-class>servlet.EditProfileServlet</servlet-class>
+        <servlet-name>EditUserNameServlet</servlet-name>
+        <servlet-class>servlet.EditUserNameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditPasswordServlet</servlet-name>
+        <servlet-class>servlet.EditPasswordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
@@ -85,8 +89,12 @@
         <url-pattern>/CreateQuiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditProfileServlet</servlet-name>
-        <url-pattern>/EditProfile</url-pattern>
+        <servlet-name>EditPasswordServlet</servlet-name>
+        <url-pattern>/EditPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserNameServlet</servlet-name>
+        <url-pattern>/EditUserName</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

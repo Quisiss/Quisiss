@@ -72,7 +72,7 @@
                             <h4 class="card-text">Welcome : ${user.userName}</h4>
                             <h4 class="card-text">Your ID : ${user.userId}</h4>
                             <h4 class="card-text">Your Email : ${user.email}</h4>
-                            <a href="EditProfile"><button class="btn btn-outline-dark" style="margin-top:20px;">Edit Profile</button></a>
+                            <a href="EditUserName"><button class="btn btn-outline-dark" style="margin-top:20px;">Edit Profile</button></a>
                         </div>
                     </div> 
                 </div>

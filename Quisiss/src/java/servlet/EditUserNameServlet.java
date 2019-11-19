@@ -18,7 +18,7 @@ import model.controller.UsersController;
  *
  * @author Acer Nitro
  */
-public class EditProfileServlet extends HttpServlet {
+public class EditUserNameServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,38 +33,43 @@ public class EditProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String msg = null;
+        String msg1 = null;
+        
 
         if (username.trim().isEmpty() || password.trim().isEmpty()) {
-            msg = "Please Insert Your Info";
-            request.setAttribute("msg", msg);
+            msg1 = "Please Insert Your Info";
+            request.setAttribute("msg1", msg1);
             getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
         }
 
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername(username);
+        Users u2 = (Users) request.getSession().getAttribute("user");
 
         if (u != null) {
-            if (username.equals(u.getUserName())) {
-                msg = "This username already exists !!!";
-                request.setAttribute("msg", msg);
+            msg1 = "This username already exists !!!";
+                request.setAttribute("msg1", msg1);
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+//            if (username.equals(u.getUserName())) {
+                
+            
+        
             }else{
-                if (password.equals(u.getPassword())) {
-                    u.setUserName(u.getUserName());
-                    usc.setUsername(u);
-                    msg = "Update Username Complete";
-                    request.setAttribute("msg", msg);
+                if (password.equals(u2.getPassword())) {
+                    u2.setUserName(username);
+                    usc.setUsername(u2);
+                    msg1 = "Update Username Complete";
+                    request.setAttribute("msg1", msg1);
                     getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
                 } else {
-                    msg = "Password Not Same !!!";
-                    request.setAttribute("msg", msg);
+                    msg1 = "Password Not Same !!!";
+                    request.setAttribute("msg1", msg1);
                     getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
                 }
             }
-        }
-        msg = "Cannot Update Username";
-        request.setAttribute("msg", msg);
+            
+        msg1 = "Cannot Update Username";
+        request.setAttribute("msg1", msg1);
         getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);  
     }
 

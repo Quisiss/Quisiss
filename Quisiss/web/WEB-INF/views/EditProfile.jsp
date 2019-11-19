@@ -72,23 +72,45 @@
                     <div class="card-deck">
                         <div class="card col-9 border-dark">
                             <div class="card-body" style="padding:20px;">
-                                <h2>Edit Profile</h2>
-                                <h5 style="color:red;">${msg}</h5>
+                                <h2>Edit Username</h2>
+                                <h5 style="color:red;">${msg1}</h5>
                                 <hr>
-                                <form action="EditProfile" method="post">
+                                <form action="EditUserName" method="post">
                                     <div class="form-group">
                                         <label for="username"><b>Change Username</b></label>
                                         <input type="text" class="form-control" placeholder="Username" name="username">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password"><b>Password</b></label>
+                                        <label for="password"><b>Current Password</b></label>
                                         <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <div class="form-group">
                                         <label for="cfpassword"><b>Confirm Password</b></label>
                                         <input type="password" class="form-control" placeholder="Confirm Password" name="cfpassword">
                                     </div> 
-                                    <a href="EditProfile"><button type="submit" class="btn btn-dark" style="margin-top:20px;">Update Profile</button></a>
+                                    <a href="EditUserName"><button type="submit" class="btn btn-dark" style="margin-top:20px;">Update Username</button></a>
+                                </form>
+                            </div>
+                        </div> 
+                                <div class="card col-9 border-dark">
+                            <div class="card-body" style="padding:20px;">
+                                <h2>Edit Password</h2>
+                                <h5 style="color:red;">${msg}</h5>
+                                <hr>
+                                <form action="EditPassword" method="post">
+                                    <div class="form-group">
+                                        <label for="username"><b>Current Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"><b>Change Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cfpassword"><b>Confirm Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Confirm Password" name="cfpassword">
+                                    </div> 
+                                    <a href="EditPassword"><button type="submit" class="btn btn-dark" style="margin-top:20px;">Update Password</button></a>
                                 </form>
                             </div>
                         </div> 
