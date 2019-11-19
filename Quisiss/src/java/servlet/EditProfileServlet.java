@@ -53,11 +53,13 @@ public class EditProfileServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             } else {
                 u.setUserName(u.getUserName());
+                usc.updateUser(u);
                 getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             }
 
             if (password.equals(cfpassword)) {
-                u.setPassword(password);
+                u.setPassword(u.getPassword());
+                usc.updateUser(u);
             } else {
                 msg = "Password Not Same !!!";
                 request.setAttribute("msg", msg);
@@ -73,11 +75,11 @@ public class EditProfileServlet extends HttpServlet {
                 usc.updateUser(u);
                 msg = "Change Profile Complete";
                 request.setAttribute("msg", msg);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
             }
-
+            
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

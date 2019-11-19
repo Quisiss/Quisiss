@@ -44,10 +44,10 @@
                         <a class="nav-link" href="Exam">Exam </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="Profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create Quiz</a>
+                        <a class="nav-link" href="CreateQuiz">Create Quiz</a>
                     </li>
                 </ul>              
                 <ul class="navbar-nav ml-md-auto">

@@ -95,7 +95,7 @@ public class UsersController {
     public static void main(String[] args) {
         UsersController usc = new UsersController();
         Users u = usc.findUsersByUsername("alan");
-        u.setPassword("1");
+        u.setPassword("1234");
         usc.updateUser(u);
         System.out.println(u.toString());
     }
