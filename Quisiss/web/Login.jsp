@@ -53,7 +53,7 @@
                                 </div>
                                 <hr>
                                 <div class="form-group">
-                                    <a href="Register.jsp"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
+                                    <a href="Register"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
                                 </div>
                             </form>
                         </div>    
