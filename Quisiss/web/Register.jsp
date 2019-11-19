@@ -42,19 +42,19 @@
                                 <hr>
                                 <div class="form-group">
                                     <label for="username"><b>Username</b></label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
+                                    <input type="text" class="form-control" placeholder="Username" name="username" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email"><b>E-mail</b></label>
-                                    <input type="email" class="form-control" placeholder="E-mail" name="email">
+                                    <input type="email" class="form-control" placeholder="E-mail" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><b>Password</b></label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><b>Confirm Password</b></label>
-                                    <input type="password" class="form-control" placeholder="Confirm Password" name="cfpassword">
+                                    <input type="password" class="form-control" placeholder="Confirm Password" name="cfpassword" required>
                                 </div>
                                 <hr>
                                 <div class="form-group">

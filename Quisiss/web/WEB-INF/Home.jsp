@@ -33,11 +33,15 @@
             .navbar-dark .navbar-text {
                 color:white;
             }
+            marquee{
+                color:white;
+                font-size: 30px;
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Quisiss</a>
+            <a class="navbar-brand" href="Home">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -59,6 +63,7 @@
             </div>
         </nav>
         <div class="container">
+            <marquee>***** This Page is not finished *****</marquee>
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6" style="margin-top:60px;">
@@ -71,7 +76,6 @@
                             <h4 class="card-text">Welcome : ${user.userName}</h4>
                             <h4 class="card-text">Your ID : ${user.userId}</h4>
                             <h4 class="card-text">Your Email : ${user.email}</h4>
-                            <a href="EditProfile"><button class="btn btn-outline-dark" style="margin-top:20px;">Edit Profile</button></a>
                         </div>
                     </div> 
                 </div>
