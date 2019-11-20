@@ -49,8 +49,11 @@
                                     <input type="password" class="form-control" placeholder="Password" name="password">
                                 </div>
                                 <div class="form-group">
+                                    <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
+                                    <a href="RePassword"><span style="margin-left:220px;">Forgot Password?</span></a>
+                                </div>
+                                <div class="form-group">
                                     <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
-                                    <label style="padding-top:20px;"><input type="checkbox" checked="checked" name="remember">Remember me</label>
                                 </div>
                                 <hr>
                                 <div class="form-group">
