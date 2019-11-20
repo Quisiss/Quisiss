@@ -13,7 +13,6 @@ public class Users {
     private int userId;
     private String userName;
     private String password;
-    private int classID;
     private String email;
 
     public Users() {
@@ -27,11 +26,10 @@ public class Users {
     }
 
     
-    public Users(int userId, String userName, String password, int classID, String email) {
+    public Users(int userId, String userName, String password, String email) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
-        this.classID = classID;
         this.email = email;
     }
 
@@ -59,14 +57,6 @@ public class Users {
         this.password = password;
     }
 
-    public int getClassID() {
-        return classID;
-    }
-
-    public void setClassID(int classID) {
-        this.classID = classID;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -74,6 +64,12 @@ public class Users {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" + "userId=" + userId + ", userName=" + userName + ", password=" + password + ", classID=" + classID + ", email=" + email + '}';
+    }
+    
     
     
 }

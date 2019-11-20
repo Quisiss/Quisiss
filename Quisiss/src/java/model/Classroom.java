@@ -14,6 +14,15 @@ public class Classroom {
     private String className;
     private String classCode;
     private int ownerId;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public Classroom(int classId, String className, String classCode, int ownerId) {
         this.classId = classId;
@@ -21,6 +30,16 @@ public class Classroom {
         this.classCode = classCode;
         this.ownerId = ownerId;
     }
+
+    public Classroom(int classId, String className, String classCode, int ownerId, int userId) {
+        this.classId = classId;
+        this.className = className;
+        this.classCode = classCode;
+        this.ownerId = ownerId;
+        this.userId = userId;
+    }
+    
+    
 
     public Classroom() {
         

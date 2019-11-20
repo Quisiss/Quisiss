@@ -58,6 +58,7 @@ public class RegisterServlet extends HttpServlet {
         } else {
 
             if (password.equals(cfpassword)) {
+                
 //            try{
 //                Users newu = new Users();
 //                newu.setUserId(uid);
@@ -73,7 +74,7 @@ public class RegisterServlet extends HttpServlet {
 //        }else{
                 Users newu = new Users(username, password, email);
                 usc.addUser(newu);
-                getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/RegisterSuccess.jsp").forward(request, response);
             }
             msg = "Password not same !!!";
             request.setAttribute("msg", msg);
@@ -81,6 +82,7 @@ public class RegisterServlet extends HttpServlet {
         }
         getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
     }
+        
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -94,7 +96,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
     }
 
     /**

@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Users;
+import model.controller.UsersController;
 
 /**
  *
@@ -29,7 +31,30 @@ public class RePasswordServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String msg = null;
         
+        
+        if(username.trim().isEmpty()){
+            msg = "Please insert your username";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/RePassword.jsp").forward(request, response);
+        }
+        
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersByUsername(username);
+        
+        if(u!=null){
+            if(username.equals(u.getUserName())){
+                request.setAttribute("password",u.getPassword());
+                getServletContext().getRequestDispatcher("/RePassword.jsp").forward(request, response);
+            
+            }
+        }
+        msg = "No user !!!";
+        request.setAttribute("msg", msg);
+        getServletContext().getRequestDispatcher("/RePassword.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,7 +69,7 @@ public class RePasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        getServletContext().getRequestDispatcher("/RePassword.jsp").forward(request, response);
     }
 
     /**

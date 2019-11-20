@@ -9,6 +9,7 @@ import database.BuildConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -17,7 +18,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Classroom;
 import model.Users;
+import model.controller.UsersController;
+import model.controller.classController;
 
 /**
  *
@@ -37,13 +41,38 @@ EntityManagerFactory emf ;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection conn = BuildConnection.getConnection();
-        EntityManager em = emf.createEntityManager();
-        //Query qry = em.createNamedQuery("Class.findByClassid");
-        Users u = em.find(Users.class,1) ;
-        System.out.println("6555555");
-        request.setAttribute("class", u);
-        System.out.println("users"+u);
+        UsersController uc = new UsersController();
+        classController cc = new classController();
+        System.out.println(request.getParameter("className"));
+        String message = null;
+        Users u = uc.findUsersById(1);
+        request.setAttribute("user", u);
+        ArrayList<Classroom> classes = cc.getClassroomByUserId(u.getUserId());
+        if(classes != null){
+            request.setAttribute("joinedclasses", classes);
+        }
+        String classCode = request.getParameter("classCode");
+        if(classCode!=null){
+            Classroom c = cc.getClassroomByCode(classCode);
+            if(c!=null){
+                ArrayList<Classroom> allclass = cc.getAllClassroom();
+                for(int i=0;i<allclass.size();i++){
+                    if(allclass.get(i).getUserId()==u.getUserId()){
+                        message = "you already in this class";
+                        request.setAttribute("message", message);
+                        getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
+                        return;
+                    }else{
+                        if(i==allclass.size()-1){
+                            cc.addUserIntoClassroom(c, u);
+                        }
+                    }
+                } 
+            }else{
+                message = "invalid classcode " + classCode;
+            }  
+        }
+        request.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
     }
 

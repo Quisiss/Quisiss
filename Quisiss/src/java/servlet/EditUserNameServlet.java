@@ -11,12 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Users;
+import model.controller.UsersController;
 
 /**
  *
  * @author Acer Nitro
  */
-public class HomeServlet extends HttpServlet {
+public class EditUserNameServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +31,46 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String msg1 = null;
+        
+
+        if (username.trim().isEmpty() || password.trim().isEmpty()) {
+            msg1 = "Please Insert Your Info";
+            request.setAttribute("msg1", msg1);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+        }
+
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersByUsername(username);
+        Users u2 = (Users) request.getSession().getAttribute("user");
+
+        if (u != null) {
+            msg1 = "This username already exists !!!";
+                request.setAttribute("msg1", msg1);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+//            if (username.equals(u.getUserName())) {
+                
+            
+        
+            }else{
+                if (password.equals(u2.getPassword())) {
+                    u2.setUserName(username);
+                    usc.setUsername(u2);
+                    msg1 = "Update Username Complete";
+                    request.setAttribute("msg1", msg1);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                } else {
+                    msg1 = "Password Not Same !!!";
+                    request.setAttribute("msg1", msg1);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                }
+            }
+            
+        msg1 = "Cannot Update Username";
+        request.setAttribute("msg1", msg1);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,7 +85,8 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+        //processRequest(request, response);
     }
 
     /**

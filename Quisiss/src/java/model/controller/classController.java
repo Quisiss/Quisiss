@@ -34,11 +34,31 @@ public class classController {
             PreparedStatement ps = conn.prepareStatement("select * from classroom");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Classroom c = new Classroom(rs.getInt("classId"),rs.getString("className"),rs.getString("classCode"),rs.getInt("ownerId"));
+                Classroom c = new Classroom(rs.getInt("classId"),rs.getString("className"),rs.getString("classCode"),rs.getInt("ownerId"),rs.getInt("userId"));
                 arr.add(c);
             }
             conn.close();
             return arr;
+        } catch (SQLException ex) {
+            Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Classroom getClassroomByCode(String classCode){
+        ArrayList<Classroom> arr = new ArrayList();
+        try{
+            conn = BuildConnection.getConnection();
+            Classroom classroom = null;
+            PreparedStatement ps = conn.prepareStatement("select * from classroom where classcode = ? and userid is null");
+            ps.setString(1, classCode);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Classroom c = new Classroom(rs.getInt("classId"),rs.getString("className"),rs.getString("classCode"),rs.getInt("ownerId"),rs.getInt("userId"));
+                classroom = c;
+            }
+            conn.close();
+            return classroom;
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -191,18 +211,17 @@ public class classController {
         //Classroom c = new Classroom(2,"test","a1a2a3",2);
         classController cc = new classController();
         System.out.println(cc.getNewClassId());
-        Users u = new Users(10,"cheer","test",1,"asdad");
+        Users u = new Users(10,"cheer","test","asdad");
         Classroom c = cc.getClassroomById(1);
-        System.out.println(c.getOwnerId());
-        System.out.println(c.getClassId());
-        System.out.println(c.getClassName());
+//        System.out.println(c.getOwnerId());
+//        System.out.println(c.getClassId());
+//        System.out.println(c.getClassName());
         ArrayList<Classroom> c1 = cc.getAllClassroom();
        for(int i=0;i<c1.size();i++){
            System.out.println(c1.get(i).getClassName()+c1.get(i).getClassCode());
         }
-        System.out.println(cc.getNewClassId());
-        //cc.addUserIntoClassroom(c, u);
-        //cc.createNewClassroom("testclass", 10);
-        cc.deleteClassById(2);
+       //cc.addUserIntoClassroom(c, u);
+        cc.createNewClassroom("testclass", 10);
+        //cc.deleteClassById(1);
     }
 }

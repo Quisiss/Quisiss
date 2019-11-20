@@ -11,12 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Users;
+import model.controller.UsersController;
 
 /**
  *
  * @author Acer Nitro
  */
-public class HomeServlet extends HttpServlet {
+public class EditPasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +31,48 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        String username = request.getParameter("username");
+        String cfpassword = request.getParameter("cfpassword");
+        String password = request.getParameter("password");
+        String msg = null;
+
+        if (cfpassword.trim().isEmpty() || password.trim().isEmpty()) {
+            msg = "Please Insert Your Info";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+        }
+
+        UsersController usc = new UsersController();
+        Users u = usc.findUsersByUsername(username);
+        Users u2 = (Users) request.getSession().getAttribute("user");
+
+        if (u != null) {
+
+//            if (username.equals(u.getUserName())) {
+        } else {
+            if (password.equals(u2.getPassword())) {
+                msg = "New Password Cannot Same Current Password !!!";
+                request.setAttribute("msg", msg);
+                getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+            } else {
+                if (cfpassword.equals(password)) {
+                    u2.setPassword(password);
+                    usc.setPassword(u2);
+                    msg = "Update Password Complete";
+                    request.setAttribute("msg", msg);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                }else{
+                    msg = "Password Not Same !!!";
+                    request.setAttribute("msg", msg);
+                    getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
+                }
+
+            }
+        }
+
+        msg = "Cannot Update Password";
+        request.setAttribute("msg", msg);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,7 +87,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/EditProfile.jsp").forward(request, response);
     }
 
     /**
