@@ -19,7 +19,7 @@
                 color: #ffffff;
             }
             body{
-                background-image: linear-gradient(to bottom, #fb58d1, #ff75a1, #ffa489, #ffd094, #fff4bd);
+                background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6" style="margin-top:60px;">
-                    <div class="card text text-center border-dark">
+                    <div class="card text-center">
                         <div class="card-header">                           
                             <h2 class="card-text" style="text-transform: uppercase;">${user.userName}</h2>
                         </div>
