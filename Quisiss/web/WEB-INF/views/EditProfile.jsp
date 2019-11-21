@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-12" style="margin-top:50px;">
                     <div class="card-deck">
-                        <div class="card col-9 border-dark">
+                        <div class="card col-9">
                             <div class="card-body" style="padding:20px;">
                                 <h2>Edit Username</h2>
                                 <h5 style="color:red;">${msg1}</h5>
@@ -92,7 +92,7 @@
                                 </form>
                             </div>
                         </div> 
-                                <div class="card col-9 border-dark">
+                                <div class="card col-9">
                             <div class="card-body" style="padding:20px;">
                                 <h2>Edit Password</h2>
                                 <h5 style="color:red;">${msg}</h5>
@@ -114,7 +114,7 @@
                                 </form>
                             </div>
                         </div> 
-                        <div class="card col-3 text-center border-dark">
+                        <div class="card col-3 text-center">
                             <div class="card-header">                           
                                 <h2 class="card-text" style="text-transform: uppercase;">${user.userName}</h2>
                             </div>
