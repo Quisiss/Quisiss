@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><b>Change Password</b></label>
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control" placeholder="New Password" name="newpassword">
                                     </div>
                                     <div class="form-group">
                                         <label for="cfpassword"><b>Confirm Password</b></label>
