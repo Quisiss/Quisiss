@@ -57,6 +57,24 @@ public class UsersController {
         return null;
     }
     
+    public Users findUsersByEmail(String email) {
+        try {
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE lower(email) = ?");
+            ps.setString(1, email.toLowerCase());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getInt("classid"), rs.getString("email"));
+            }
+            rs.close();
+            conn.close();
+        } catch (SQLException ex) { 
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    
     public boolean addUser(Users u){
         
         conn = BuildConnection.getConnection();
