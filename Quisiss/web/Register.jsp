@@ -16,12 +16,14 @@
         <style>
             .btn-dark{
                 background-color: #ff3385;
+                border-color: #ff3385;
             }
             .btn-dark:hover{
                 background-color: #ff1a75;
+                border-color: #ff3385;
             }
             body{
-                background-image: linear-gradient(to right, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
+                background-image: linear-gradient(to right, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }

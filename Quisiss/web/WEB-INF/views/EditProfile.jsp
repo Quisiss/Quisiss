@@ -23,7 +23,7 @@
                 border-color: #ff3385;
             }
             body{
-                background-image: linear-gradient(to left top, #f925a2, #ff647f, #ff9c75, #ffcb8b, #fff3bc);
+                background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
@@ -100,7 +100,7 @@
                                 <form action="EditPassword" method="post">
                                     <div class="form-group">
                                         <label for="password"><b>Current Password</b></label>
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control" placeholder="Password" name="username">
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><b>Change Password</b></label>

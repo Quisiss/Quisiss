@@ -23,8 +23,7 @@
                 border-color: #ff3385;
             }
             body{
-                background-image: linear-gradient(to right top, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
-                /*background: linear-gradient(to top right, #ef1c98 0%, #f9f871 100%);*/
+                background-image: linear-gradient(to right top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
