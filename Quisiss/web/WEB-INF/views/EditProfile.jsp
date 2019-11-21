@@ -120,9 +120,10 @@
                             </div>
                             <div class="card-body" style="padding:20px;">
                                 <img src="images/user1.png" alt="user" style="width:60%;"><br><br>
-                                <h4 class="card-text">Username : ${user.userName}</h4>
-                                <h4 class="card-text">Your ID : ${user.userId}</h4>
-                                <h4 class="card-text">Your Email : ${user.email}</h4>
+                                <h4 class="card-text">Username : </h4><h5 style="color:#ff1a75;">${user.userName}</h5>
+                                <h4 class="card-text">Your ID : </h4><h5 style="color:#ff1a75;">${user.userId}</h5>
+                                <h4 class="card-text">Your Email : </h4><h5 style="color:#ff1a75;">${user.email}</h5>
+                                <h4 class="card-text">Your Password : </h4><h5 style="color:#ff1a75;">${user.password}</h5>
                                 <a href="Profile"><button class="btn btn-outline-dark" style="margin-top:20px;">Back to Profile</button></a>
                             </div>
                         </div> 
