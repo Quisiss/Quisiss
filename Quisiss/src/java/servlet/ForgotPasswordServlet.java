@@ -39,10 +39,10 @@ public class ForgotPasswordServlet extends HttpServlet {
         if(u!=null){
             Mail m = new Mail();
             m.sendMail(u.getEmail(), u.getUserName(), u.getPassword());
-            request.setAttribute("message", "รอรับรหัสที่เมลนะคะ");
+            request.setAttribute("message", "Please wait for get mail");
             getServletContext().getRequestDispatcher("/ForgotPassword.jsp").forward(request, response);
         }
-        request.setAttribute("message", "ไม่สำเร็จ");
+        request.setAttribute("message", "No user in quisiss");
         getServletContext().getRequestDispatcher("/ForgotPassword.jsp").forward(request, response);
     }
 
