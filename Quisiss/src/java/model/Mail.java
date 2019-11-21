@@ -33,9 +33,11 @@ public class Mail {
                     Message.RecipientType.TO,
                     InternetAddress.parse(Email)
             );
-            message.setSubject("Test mail to show Sunny42");
+            message.setSubject("Quisiss");
             message.setText("Dear " + nameUser +","
-                    + "\n\n " + myMessage);
+                    + "\n\n Your password is " + myMessage
+                    + "\n\n Thank you,"
+                    + "\n\n Quisiss Team");
 
             Transport.send(message);
 
