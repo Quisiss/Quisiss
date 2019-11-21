@@ -99,8 +99,8 @@
                                 <hr>
                                 <form action="EditPassword" method="post">
                                     <div class="form-group">
-                                        <label for="username"><b>Current Password</b></label>
-                                        <input type="password" class="form-control" placeholder="Username" name="username">
+                                        <label for="password"><b>Current Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><b>Change Password</b></label>
