@@ -37,7 +37,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
             <a class="navbar-brand" href="Home">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
@@ -55,7 +55,7 @@
                     <span class="navbar-text">
                         ${user.userName} |
                     </span>
-                    <a href="Logout"><button class="btn btn-outline-info btn-sm" style="margin:6px;">Logout</button></a>
+                    <a href="Logout"><button class="btn btn-info btn-sm" style="margin:6px;">Logout</button></a>
                 </ul>    
             </div>
         </nav>
