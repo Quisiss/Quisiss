@@ -16,9 +16,11 @@
         <style>
             .btn-dark{
                 background-color: #ff3385;
+                border-color: #ff3385;
             }
             .btn-dark:hover{
                 background-color: #ff1a75;
+                border-color: #ff3385;
             }
             body{
                 background-image: linear-gradient(to right top, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
@@ -50,7 +52,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
-                                    <a href="RePassword"><span style="margin-left:220px;">Forgot Password?</span></a>
+                                    <a href="ForgotPassword"><span style="margin-left:220px;">Forgot Password?</span></a>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
