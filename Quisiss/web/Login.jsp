@@ -36,34 +36,33 @@
                 <div class="col-6">
                     <div class="card justify-content-center" style="margin-top:7em;">
 
-                    <div class="card-body">
-                        <div class="col-12 justify-content-center">
-                            <form action="Login" method="post">
-                                <h2 class="mb-4 mt-0 text-center">Log in</h2>
-                                ${msg}
-                                <div class="form-group">
-                                    <label for="username"><b>Username</b></label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password"><b>Password</b></label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
-                                </div>
-                                <div class="form-group">
-                                    <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
-                                    <a href="ForgotPassword"><span style="margin-left:220px;">Forgot Password?</span></a>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <a href="Register"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
-                                </div>
-                            </form>
-                        </div>    
-                    </div>
-
+                        <div class="card-body">
+                            <div class="col-12 justify-content-center">
+                                <form action="Login" method="post">
+                                    <h2 class="mb-4 mt-0 text-center">Log in</h2>
+                                    <h5 style="color:#FFAE93;">${msg}</h5>
+                                    <div class="form-group">
+                                        <label for="username"><b>Username</b></label>
+                                        <input type="text" class="form-control" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"><b>Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
+                                        <a href="ForgotPassword"><span style="margin-left:220px;">Forgot Password?</span></a>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <a href="Register"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
+                                    </div>
+                                </form>
+                            </div>    
+                        </div>
                     </div>
                 </div> 
                 <div class="col-3"></div>
