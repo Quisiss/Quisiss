@@ -23,7 +23,7 @@
                 border-color: #ff3385;
             }
             body{
-                background-image: linear-gradient(to left top, #f925a2, #ff647f, #ff9c75, #ffcb8b, #fff3bc);
+                background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
@@ -44,7 +44,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
             <a class="navbar-brand" href="Home">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
@@ -62,7 +62,7 @@
                     <span class="navbar-text">
                         ${user.userName} |
                     </span>
-                    <a href="Logout"><button class="btn btn-outline-info btn-sm" style="margin:6px;">Logout</button></a>
+                    <a href="Logout"><button class="btn btn-info btn-sm" style="margin:6px;">Logout</button></a>
                 </ul>    
             </div>
         </nav>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-12" style="margin-top:50px;">
                     <div class="card-deck">
-                        <div class="card col-9 border-dark">
+                        <div class="card col-9">
                             <div class="card-body" style="padding:20px;">
                                 <h2>Edit Username</h2>
                                 <h5 style="color:red;">${msg1}</h5>
@@ -92,19 +92,19 @@
                                 </form>
                             </div>
                         </div> 
-                                <div class="card col-9 border-dark">
+                                <div class="card col-9">
                             <div class="card-body" style="padding:20px;">
                                 <h2>Edit Password</h2>
                                 <h5 style="color:red;">${msg}</h5>
                                 <hr>
                                 <form action="EditPassword" method="post">
                                     <div class="form-group">
-                                        <label for="username"><b>Current Password</b></label>
-                                        <input type="password" class="form-control" placeholder="Username" name="username">
+                                        <label for="password"><b>Current Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><b>Change Password</b></label>
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control" placeholder="New Password" name="newpassword">
                                     </div>
                                     <div class="form-group">
                                         <label for="cfpassword"><b>Confirm Password</b></label>
@@ -114,15 +114,16 @@
                                 </form>
                             </div>
                         </div> 
-                        <div class="card col-3 text-center border-dark">
+                        <div class="card col-3 text-center">
                             <div class="card-header">                           
                                 <h2 class="card-text" style="text-transform: uppercase;">${user.userName}</h2>
                             </div>
                             <div class="card-body" style="padding:20px;">
                                 <img src="images/user1.png" alt="user" style="width:60%;"><br><br>
-                                <h4 class="card-text">Username : ${user.userName}</h4>
-                                <h4 class="card-text">Your ID : ${user.userId}</h4>
-                                <h4 class="card-text">Your Email : ${user.email}</h4>
+                                <h4 class="card-text">Username : </h4><h5 style="color:#ff1a75;">${user.userName}</h5>
+                                <h4 class="card-text">Your ID : </h4><h5 style="color:#ff1a75;">${user.userId}</h5>
+                                <h4 class="card-text">Your Email : </h4><h5 style="color:#ff1a75;">${user.email}</h5>
+                                <h4 class="card-text">Your Password : </h4><h5 style="color:#ff1a75;">${user.password}</h5>
                                 <a href="Profile"><button class="btn btn-outline-dark" style="margin-top:20px;">Back to Profile</button></a>
                             </div>
                         </div> 

@@ -19,7 +19,7 @@
                 color: #ffffff;
             }
             body{
-                background-image: linear-gradient(to bottom, #fb58d1, #ff75a1, #ffa489, #ffd094, #fff4bd);
+                background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
@@ -37,7 +37,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
             <a class="navbar-brand" href="Home">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
@@ -55,7 +55,7 @@
                     <span class="navbar-text">
                         ${user.userName} |
                     </span>
-                    <a href="Logout"><button class="btn btn-outline-info btn-sm" style="margin:6px;">Logout</button></a>
+                    <a href="Logout"><button class="btn btn-info btn-sm" style="margin:6px;">Logout</button></a>
                 </ul>    
             </div>
         </nav>
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6" style="margin-top:60px;">
-                    <div class="card text text-center border-dark">
+                    <div class="card text-center">
                         <div class="card-header">                           
                             <h2 class="card-text" style="text-transform: uppercase;">${user.userName}</h2>
                         </div>

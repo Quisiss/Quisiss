@@ -16,13 +16,14 @@
         <style>
             .btn-dark{
                 background-color: #ff3385;
+                border-color: #ff3385;
             }
             .btn-dark:hover{
                 background-color: #ff1a75;
+                border-color: #ff3385;
             }
             body{
-                background-image: linear-gradient(to right top, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
-                /*background: linear-gradient(to top right, #ef1c98 0%, #f9f871 100%);*/
+                background-image: linear-gradient(to right top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }
@@ -35,31 +36,33 @@
                 <div class="col-6">
                     <div class="card justify-content-center" style="margin-top:7em;">
 
-                    <div class="card-body">
-                        <div class="col-12 justify-content-center">
-                            <form action="Login" method="post">
-                                <h2 class="mb-4 mt-0 text-center">Log in</h2>
-                                ${msg}
-                                <div class="form-group">
-                                    <label for="username"><b>Username</b></label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password"><b>Password</b></label>
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
-                                    <label style="padding-top:20px;"><input type="checkbox" checked="checked" name="remember">Remember me</label>
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <a href="Register"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
-                                </div>
-                            </form>
-                        </div>    
-                    </div>
-
+                        <div class="card-body">
+                            <div class="col-12 justify-content-center">
+                                <form action="Login" method="post">
+                                    <h2 class="mb-4 mt-0 text-center">Log in</h2>
+                                    <h5 style="color:#FFAE93;">${msg}</h5>
+                                    <div class="form-group">
+                                        <label for="username"><b>Username</b></label>
+                                        <input type="text" class="form-control" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password"><b>Password</b></label>
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
+                                        <a href="ForgotPassword"><span style="margin-left:220px;">Forgot Password?</span></a>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-dark btn-lg btn-block" value="Log in">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <a href="Register"><input type="button" class="btn btn-outline-secondary  btn-block btn-pill  btn-shadow-blue" value="Register"></a>
+                                    </div>
+                                </form>
+                            </div>    
+                        </div>
                     </div>
                 </div> 
                 <div class="col-3"></div>

@@ -3,6 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/src/java/servlet/EditUserNameServlet.java</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/src/java/servlet/ForgotPasswordServlet.java</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/web/Login.jsp</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/web/ForgotPassword.jsp</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/web/WEB-INF/views/EditProfile.jsp</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/src/java/servlet/EditPasswordServlet.java</file>
+            <file>file:/D:/GitProject/Quisiss/Quisiss/src/java/model/controller/UsersController.java</file>
             <file>file:/D:/Quisiss/Quisiss/src/java/servlet/createClassServlet.java</file>
             <file>file:/D:/Quisiss/Quisiss/src/java/model/controller/classController.java</file>
             <file>file:/D:/Quisiss/Quisiss/nbproject/build-impl.xml</file>

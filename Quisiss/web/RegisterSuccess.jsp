@@ -23,7 +23,7 @@
                 border: solid #ff3385 1px;
             }
             body{
-                background-image: linear-gradient(to right bottom, #eb2b9c, #ff607c, #ff956f, #ffc47f, #fbedaa);
+                background-image: linear-gradient(to right bottom, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
                 height: 100vh;
             }    

@@ -9,10 +9,6 @@
         <servlet-class>servlet.TermServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RePasswordServlet</servlet-name>
-        <servlet-class>servlet.RePasswordServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>servlet.RegisterServlet</servlet-class>
     </servlet>
@@ -52,6 +48,10 @@
         <servlet-name>deleteClassServlet</servlet-name>
         <servlet-class>servlet.deleteClassServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>servlet.ForgotPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClassServlet</url-pattern>
@@ -59,10 +59,6 @@
     <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RePasswordServlet</servlet-name>
-        <url-pattern>/RePassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -103,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>deleteClassServlet</servlet-name>
         <url-pattern>/deleteClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/ForgotPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
