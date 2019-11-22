@@ -93,8 +93,11 @@
             </div>
 
             ${message}
-            <div>
-                <h1>Owned class</h1>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Owned class</h1>
+                </div>
+                
                 <c:forEach items="${ownClass}" var="j">
                     <c:choose>
                         <c:when test="${j.ownerId==user.userId}">
@@ -122,8 +125,6 @@
                 </div>
 
                 <c:forEach items="${joinedClasses}" var="j">
-                    <c:choose>
-                        <c:when test="${j.ownerId!=user.userId}">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">${j.className}</h5>
@@ -131,8 +132,6 @@
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
-                        </c:when>
-                    </c:choose>
 
                 </c:forEach>
             </div>

@@ -173,7 +173,7 @@ public class classController {
         ArrayList<Classroom> classes = new ArrayList();
         try{
             conn = BuildConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("select * from classroom where ownerid = ?");
+            PreparedStatement ps = conn.prepareStatement("select * from classroom where ownerid = ? and userid is null");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
