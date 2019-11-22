@@ -66,15 +66,26 @@ EntityManagerFactory emf ;
             if(c!=null){
                 ArrayList<Classroom> allclass = cc.getAllClassroom();
                 for(int i=0;i<allclass.size();i++){
-                    if(allclass.get(i).getUserId()==u.getUserId()){
-                        message = "you already in this class";
-                        request.setAttribute("message", message);
-                        getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
-                        return;
-                    }else{
-                        if(i==allclass.size()-1){
-                            cc.addUserIntoClassroom(c, u);
+                    System.out.println( allclass.get(i).getClassCode());
+                    System.out.println(c.getClassCode());
+                    if(allclass.get(i).getClassCode().equals(c.getClassCode())){
+                        System.out.println(u.getUserId());
+                        System.out.println(allclass.get(i).getUserId());
+                        if(allclass.get(i).getUserId()==u.getUserId()){
+                            System.out.println(allclass.get(i).getUserId());
+                            message = "you already in this class";
+                            request.setAttribute("message", message);
+                            getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
+                            return;
+                        }else{
+                            if(i==allclass.size()-1){ 
+                                System.out.println("insert");
+                                cc.addUserIntoClassroom(c, u);
+                                response.sendRedirect("createClassServlet");
+                                return;
+                            }
                         }
+                        
                     }
                 } 
             }else{

@@ -238,8 +238,9 @@ public class classController {
        for(int i=0;i<c1.size();i++){
            System.out.println(c1.get(i).getClassName()+c1.get(i).getClassCode());
         }
+       //cc.deleteClassById(2);
        //cc.addUserIntoClassroom(c, u);
-        cc.createNewClassroom("testclass", 10);
+        //cc.createNewClassroom("testclass", 10);
         //cc.deleteClassById(1);
     }
 }
