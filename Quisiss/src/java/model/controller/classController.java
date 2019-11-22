@@ -169,6 +169,24 @@ public class classController {
         return null;
     }
     
+    public ArrayList<Classroom> getClassroomByOwnerId(int id){
+        ArrayList<Classroom> classes = new ArrayList();
+        try{
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from classroom where ownerid = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Classroom c = new Classroom(rs.getInt("classId"),rs.getString("className"),rs.getString("classCode"),rs.getInt("ownerId"));
+                classes.add(c);
+            }
+           return classes;
+        } catch (SQLException ex) {
+            Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public ArrayList<Classroom> getClassroomByUserId(int id){
         ArrayList<Classroom> classes = new ArrayList();
         try{

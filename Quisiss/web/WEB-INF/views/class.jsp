@@ -79,7 +79,7 @@
                             <form action="createClassServlet">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Classname:</label>
-                                    <input type="text" class="form-control" id="recipient-name" name="className" value="${param.className}">
+                                    <input type="text" class="form-control" id="recipient-name" name="className" value="${param.className}" required>
                                     <button class="btn btn-primary my-2 my-sm-0" type="submit">Create class!</button> 
                                 </div>
                             </form>
@@ -87,6 +87,7 @@
 
                     </div>
                     <div class="modal-footer">
+                        ${message}
                     </div>
                 </div>
             </div>
@@ -94,14 +95,25 @@
             ${message}
             <div>
                 <h1>Owned class</h1>
-                <c:forEach items="${joinedclasses}" var="j">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${j.className}</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+                <c:forEach items="${ownClass}" var="j">
+                    <c:choose>
+                        <c:when test="${j.ownerId==user.userId}">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <a href="deleteClass?classId=${j.classId}">
+                                        <button type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </a>
+                                    <h5 class="card-title">${j.className}</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">
+                                        Go somewhere
+                                    </a>
+                                </div>
+                            </div>
+                        </c:when>                        
+                    </c:choose>
                 </c:forEach>
             </div>
             <div class="row">
@@ -109,14 +121,19 @@
                     <h1>Joined class</h1>
                 </div>
 
-                <c:forEach items="${joinedclasses}" var="j">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${j.className}</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+                <c:forEach items="${joinedClasses}" var="j">
+                    <c:choose>
+                        <c:when test="${j.ownerId!=user.userId}">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${j.className}</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </c:when>
+                    </c:choose>
+
                 </c:forEach>
             </div>
         </div>

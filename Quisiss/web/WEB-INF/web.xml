@@ -48,6 +48,10 @@
         <servlet-name>EditPasswordServlet</servlet-name>
         <servlet-class>servlet.EditPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteClassServlet</servlet-name>
+        <servlet-class>servlet.deleteClassServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClassServlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>EditUserNameServlet</servlet-name>
         <url-pattern>/EditUserName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteClassServlet</servlet-name>
+        <url-pattern>/deleteClass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

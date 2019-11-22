@@ -43,13 +43,22 @@ EntityManagerFactory emf ;
             throws ServletException, IOException {
         UsersController uc = new UsersController();
         classController cc = new classController();
-        System.out.println(request.getParameter("className"));
+        String newClassName = request.getParameter("className");
         String message = null;
         Users u = uc.findUsersById(1);
         request.setAttribute("user", u);
         ArrayList<Classroom> classes = cc.getClassroomByUserId(u.getUserId());
         if(classes != null){
-            request.setAttribute("joinedclasses", classes);
+            request.setAttribute("joinedClasses", classes);
+        }
+        ArrayList<Classroom> ownClass = cc.getClassroomByOwnerId(u.getUserId());
+        if(ownClass != null){
+            request.setAttribute("ownClass", ownClass);
+        }
+        if(newClassName != null && newClassName.length()>0){
+            cc.createNewClassroom(newClassName, u.getUserId());
+            response.sendRedirect("createClassServlet");
+            return;
         }
         String classCode = request.getParameter("classCode");
         if(classCode!=null){

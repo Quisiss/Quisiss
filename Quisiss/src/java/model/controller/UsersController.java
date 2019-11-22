@@ -108,17 +108,6 @@ public class UsersController {
     }
 
     public static void main(String[] args) {
-        UsersController usc = new UsersController();
-<<<<<<< HEAD
-        //Users u = usc.findUsersByUsername("alan");
-        Users u = usc.findUsersById(1);
-        System.out.println(u);
-=======
-        Users u = usc.findUsersByUsername("steve");
-        u.setUserName("steve1");
-        //u.setPassword("1234");
-        usc.setUsername(u);
-        System.out.println(u.toString());
->>>>>>> develop
+        
     }
 }
