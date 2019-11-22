@@ -28,8 +28,10 @@ import model.controller.classController;
  * @author Lenovo-Y50
  */
 public class createClassServlet extends HttpServlet {
-@PersistenceUnit(unitName = "QuisissPU")
-EntityManagerFactory emf ;
+
+    @PersistenceUnit(unitName = "QuisissPU")
+    EntityManagerFactory emf;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,49 +50,48 @@ EntityManagerFactory emf ;
         Users u = uc.findUsersById(1);
         request.setAttribute("user", u);
         ArrayList<Classroom> classes = cc.getClassroomByUserId(u.getUserId());
-        if(classes != null){
+        if (classes != null) {
             request.setAttribute("joinedClasses", classes);
         }
         ArrayList<Classroom> ownClass = cc.getClassroomByOwnerId(u.getUserId());
-        if(ownClass != null){
+        if (ownClass != null) {
             request.setAttribute("ownClass", ownClass);
         }
-        if(newClassName != null && newClassName.length()>0){
+        if (newClassName != null && newClassName.length() > 0) {
             cc.createNewClassroom(newClassName, u.getUserId());
             response.sendRedirect("createClassServlet");
             return;
         }
         String classCode = request.getParameter("classCode");
-        if(classCode!=null){
+        if (classCode != null) {
             Classroom c = cc.getClassroomByCode(classCode);
-            if(c!=null){
+            if (c != null) {
                 ArrayList<Classroom> allclass = cc.getAllClassroom();
-                for(int i=0;i<allclass.size();i++){
-                    System.out.println( allclass.get(i).getClassCode());
-                    System.out.println(c.getClassCode());
-                    if(allclass.get(i).getClassCode().equals(c.getClassCode())){
-                        System.out.println(u.getUserId());
+                for (int i = 0; i < allclass.size(); i++) {
+                    if (allclass.get(i).getClassCode().equals(c.getClassCode())) {
+                        System.out.println("55555");
                         System.out.println(allclass.get(i).getUserId());
-                        if(allclass.get(i).getUserId()==u.getUserId()){
+                        if (allclass.get(i).getUserId() == u.getUserId()) {
                             System.out.println(allclass.get(i).getUserId());
                             message = "you already in this class";
                             request.setAttribute("message", message);
                             getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
                             return;
-                        }else{
-                            if(i==allclass.size()-1){ 
-                                System.out.println("insert");
-                                cc.addUserIntoClassroom(c, u);
-                                response.sendRedirect("createClassServlet");
-                                return;
-                            }
+                        } else {
+
                         }
-                        
+
                     }
-                } 
-            }else{
+                    if (i == allclass.size() - 1) {
+                        System.out.println("insert");
+                        cc.addUserIntoClassroom(c, u);
+                        response.sendRedirect("createClassServlet");
+                        return;
+                    }
+                }
+            } else {
                 message = "invalid classcode " + classCode;
-            }  
+            }
         }
         request.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
@@ -135,4 +136,4 @@ EntityManagerFactory emf ;
         return "Short description";
     }// </editor-fold>
 
-}  
+}

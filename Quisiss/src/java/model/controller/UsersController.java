@@ -64,7 +64,7 @@ public class UsersController {
             ps.setString(1, email.toLowerCase());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getInt("classid"), rs.getString("email"));
+                return new Users(rs.getInt("userid"), rs.getString("username"), rs.getString("password"), rs.getString("email"));
             }
             rs.close();
             conn.close();
