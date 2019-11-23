@@ -132,7 +132,7 @@ public class questionController {
             ps1.executeUpdate();
             ArrayList<Quiz> quizs = qc.getQuizByClassId(classid);
             for (int i = quizId; i <= quizs.size(); i++) {
-                PreparedStatement ps2 = conn.prepareStatement("UPDATE quiz SET quizId = ? WHERE quizId = ? and classid = ?");
+                PreparedStatement ps2 = conn.prepareStatement("UPDATE question SET quizId = ? WHERE quizId = ? and classid = ?");
                 ps2.setInt(1, i);
                 ps2.setInt(2, i+1);
                 ps2.setInt(3,classid);

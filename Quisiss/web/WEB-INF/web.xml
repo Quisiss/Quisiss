@@ -56,6 +56,14 @@
         <servlet-name>ManageClassServlet</servlet-name>
         <servlet-class>servlet.ManageClassServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addQuizServlet</servlet-name>
+        <servlet-class>servlet.addQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteQuizServlet</servlet-name>
+        <servlet-class>servlet.deleteQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClassServlet</url-pattern>
@@ -111,6 +119,14 @@
     <servlet-mapping>
         <servlet-name>ManageClassServlet</servlet-name>
         <url-pattern>/ManageClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addQuizServlet</servlet-name>
+        <url-pattern>/addQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteQuizServlet</servlet-name>
+        <url-pattern>/deleteQuiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

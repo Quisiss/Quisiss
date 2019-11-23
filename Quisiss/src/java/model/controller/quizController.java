@@ -123,7 +123,9 @@ public class quizController {
     
     public void deleteQuizById(Classroom c,int quizId){
         try{
+            
             quizController qc = new quizController();
+            Quiz q = qc.getQuizById(c, quizId);
             questionController quc = new questionController();
             ChoiceController cc = new ChoiceController();
             conn = BuildConnection.getConnection();
@@ -133,6 +135,7 @@ public class quizController {
             ps1.executeUpdate();
             ArrayList<Quiz> quizs = qc.getQuizByClassId(c.getClassId());
             for (int i = quizId; i <= quizs.size(); i++) {
+                System.out.println(quizs.size());
                 PreparedStatement ps2 = conn.prepareStatement("UPDATE quiz SET quizid = ? WHERE classid = ? and quizId = ?");
                 ps2.setInt(1, i);
                 ps2.setInt(2, c.getClassId());
@@ -140,7 +143,7 @@ public class quizController {
                 ps2.executeUpdate();
             }
             quc.deleteQuestionByQuizId(quizId, c.getClassId());
-            cc.deleteChoiceByQuizId(qc.getQuizById(c, quizId));
+            cc.deleteChoiceByQuizId(q);
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(classController.class.getName()).log(Level.SEVERE, null, ex);

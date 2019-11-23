@@ -19,6 +19,62 @@
     <body>
         <div class="container">
             <h1>Quiz of ${class.className}</h1>
+            <c:choose>
+                <c:when test="${quizs==[]}">
+                    <div class="card">
+                        <div class="card-header">
+                            no quiz yet
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal" > 
+                                Create new ${class.className} quiz
+                            </button>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${quizs}" var="q">
+                        <div class="card">
+                            <div class="card-header">
+                                no quiz yet
+                                <a href="deleteQuiz?classId=${class.classId}&&quizId=${q.quizId}" class="btn btn-danger float-right">
+                                    Delete
+                                </a>
+                                <a href="ManageClass?classId=${j.classId}" class="btn btn-warning float-right mr-sm-2">
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <div class="card">
+                        <div class="card-header">
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal" > 
+                                add new quiz
+                            </button>
+                        </div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create your new quiz on ${class.className}</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="addQuiz" method="post">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Name </label>
+                                    <input type="text" class="form-control" id="recipient-name" name="quizName" value="${param.quizName}" required>
+                                    <label for="recipient-name" class="col-form-label">Time(second) </label>
+                                    <input type="number" class="form-control" id="recipient-name" name="quizTime" value="${param.quizTime}" required>
+                                    <button class="btn btn-primary mt-3" type="submit" name="classId" value="${class.classId}">Create quiz!</button> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    ${message}
             <h1>Student</h1>
             <c:forEach items="${student}" var="s">
                 <div class="card">

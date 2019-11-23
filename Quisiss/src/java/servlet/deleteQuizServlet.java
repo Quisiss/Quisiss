@@ -7,14 +7,12 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Classroom;
-import model.Quiz;
 import model.Users;
 import model.controller.UsersController;
 import model.controller.classController;
@@ -24,7 +22,7 @@ import model.controller.quizController;
  *
  * @author Lenovo-Y50
  */
-public class ManageClassServlet extends HttpServlet {
+public class deleteQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,36 +35,33 @@ public class ManageClassServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String preClassId = request.getParameter("classId");
+                String id = request.getParameter("classId");
         HttpSession session = request.getSession();
+        String preClassId = request.getParameter("classId");
        // Users u = (Users) session.getAttribute("user");
         UsersController uc = new UsersController();
-       Users u = uc.findUsersById(1);
-        String message = null;
-        int classId = Integer.parseInt(preClassId);
         classController cc = new classController();
         quizController qc = new quizController();
+        Users u = uc.findUsersById(1);
+        String message = null;
+        int classId = Integer.parseInt(preClassId);
+        String prequizId = request.getParameter("quizId");
+        int quizId = Integer.parseInt(prequizId);
         Classroom c = cc.getClassroomById(classId);
         if(c!=null){
             if(c.getOwnerId()== u.getUserId()){
-                ArrayList<Users> users = cc.getUsersByClassId(classId);
-                ArrayList<Quiz> quizs = qc.getQuizByClassId(classId);
-                if(quizs==null){
-                    message = "no quiz yet";
-                }                
-                request.setAttribute("message", message);
-                request.setAttribute("quizs", quizs);
-                request.setAttribute("student", users);
+                System.out.println(quizId);
+                qc.deleteQuizById(c, quizId);
             }else{
                 message = "not your class";
-                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);
                 request.setAttribute("message", message);
+                getServletContext().getRequestDispatcher("/ManageClass").forward(request, response);
                 return;
             }
         }
         request.setAttribute("class", c);
-        getServletContext().getRequestDispatcher("/WEB-INF/views/ManageClass.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/ManageClass").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
