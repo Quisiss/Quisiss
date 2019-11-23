@@ -52,6 +52,10 @@
         <servlet-name>ForgotPasswordServlet</servlet-name>
         <servlet-class>servlet.ForgotPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageClassServlet</servlet-name>
+        <servlet-class>servlet.ManageClassServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClassServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ForgotPasswordServlet</servlet-name>
         <url-pattern>/ForgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageClassServlet</servlet-name>
+        <url-pattern>/ManageClass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

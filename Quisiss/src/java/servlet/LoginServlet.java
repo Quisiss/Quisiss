@@ -48,7 +48,8 @@ public class LoginServlet extends HttpServlet {
         if(u!=null){
             if(password.equals(u.getPassword())){
                 request.getSession().setAttribute("user", u);
-                getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);
+                return;
             }else{
                 msg = "Incorrect Password";
                 request.setAttribute("msg", msg);

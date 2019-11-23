@@ -61,8 +61,8 @@
             </div>
         </nav>
         <div class="container">
-            <form class="form-inline">
-                <input class="form-control mr-sm-1" type="text" name="classCode" value="${param.classCode}"/> 
+            <form class="form-inline" action="createClassServlet">
+                <input class="form-control mr-sm-1" type="text" name="classCode" value="${param.classCode}" required/> 
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">
                     Join Class
                 </button>
@@ -109,9 +109,9 @@
                                         </button>
                                     </a>
                                     <h5 class="card-title">${j.className}</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">
-                                        Go somewhere
+                                    <p class="card-text"> code : ${j.classCode}</p>
+                                    <a href="ManageClass?classId=${j.classId}" class="btn btn-primary">
+                                        Manage your class
                                     </a>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">${j.className}</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <p class="card-text">Own by : ${j.ownerId}</p>
+                                    <a href="#" class="btn btn-primary">View class</a>
                                 </div>
                             </div>
 

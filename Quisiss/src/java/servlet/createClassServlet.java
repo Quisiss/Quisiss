@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Classroom;
 import model.Users;
 import model.controller.UsersController;
@@ -43,10 +44,15 @@ public class createClassServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        //Users us = (Users) session.getAttribute("user");
         UsersController uc = new UsersController();
         classController cc = new classController();
+        String classCode = request.getParameter("classCode");
         String newClassName = request.getParameter("className");
         String message = null;
+        //Users u = uc.findUsersById(us.getUserId());
         Users u = uc.findUsersById(1);
         request.setAttribute("user", u);
         ArrayList<Classroom> classes = cc.getClassroomByUserId(u.getUserId());
@@ -62,15 +68,12 @@ public class createClassServlet extends HttpServlet {
             response.sendRedirect("createClassServlet");
             return;
         }
-        String classCode = request.getParameter("classCode");
         if (classCode != null) {
             Classroom c = cc.getClassroomByCode(classCode);
             if (c != null) {
                 ArrayList<Classroom> allclass = cc.getAllClassroom();
                 for (int i = 0; i < allclass.size(); i++) {
                     if (allclass.get(i).getClassCode().equals(c.getClassCode())) {
-                        System.out.println("55555");
-                        System.out.println(allclass.get(i).getUserId());
                         if (allclass.get(i).getUserId() == u.getUserId()) {
                             System.out.println(allclass.get(i).getUserId());
                             message = "you already in this class";
