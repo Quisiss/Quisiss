@@ -65,10 +65,6 @@
         <servlet-class>servlet.deleteQuizServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>createClassServlet</servlet-name>
-        <url-pattern>/createClassServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
     </servlet-mapping>
@@ -127,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>deleteQuizServlet</servlet-name>
         <url-pattern>/deleteQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createClassServlet</servlet-name>
+        <url-pattern>/createClass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
