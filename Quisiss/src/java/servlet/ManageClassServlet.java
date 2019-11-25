@@ -64,6 +64,12 @@ public class ManageClassServlet extends HttpServlet {
                 request.setAttribute("message", message);
                 return;
             }
+        }else{
+                message = "not your class";
+                request.setAttribute("message1", message);
+                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);
+                
+                return;
         }
         request.setAttribute("class", c);
         getServletContext().getRequestDispatcher("/WEB-INF/views/ManageClass.jsp").forward(request, response);

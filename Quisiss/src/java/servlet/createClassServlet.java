@@ -52,6 +52,10 @@ public class createClassServlet extends HttpServlet {
         String classCode = request.getParameter("classCode");
         String newClassName = request.getParameter("className");
         String message = null;
+        String message1 = (String) request.getAttribute("message1");
+        if(message1!=null){
+            message = message1;
+        }
         //Users u = uc.findUsersById(us.getUserId());
         Users u = uc.findUsersById(1);
         request.setAttribute("user", u);
@@ -94,8 +98,10 @@ public class createClassServlet extends HttpServlet {
                 }
             } else {
                 message = "invalid classcode " + classCode;
+                System.out.println(message);
             }
         }
+        System.out.println(message);
         request.setAttribute("message", message);
         getServletContext().getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
     }

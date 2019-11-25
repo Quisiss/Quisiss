@@ -86,9 +86,6 @@
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        ${message}
-                    </div>
                 </div>
             </div>
 

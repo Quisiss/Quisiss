@@ -34,7 +34,7 @@
                     <c:forEach items="${quizs}" var="q">
                         <div class="card">
                             <div class="card-header">
-                                no quiz yet
+                                ${q.quizName}
                                 <a href="deleteQuiz?classId=${class.classId}&&quizId=${q.quizId}" class="btn btn-danger float-right">
                                     Delete
                                 </a>
