@@ -69,7 +69,7 @@ public class createClassServlet extends HttpServlet {
         }
         if (newClassName != null && newClassName.length() > 0) {
             cc.createNewClassroom(newClassName, u.getUserId());
-            response.sendRedirect("createClassServlet");
+            response.sendRedirect("createClass");
             return;
         }
         if (classCode != null) {
@@ -92,7 +92,7 @@ public class createClassServlet extends HttpServlet {
                     if (i == allclass.size() - 1) {
                         System.out.println("insert");
                         cc.addUserIntoClassroom(c, u);
-                        response.sendRedirect("createClassServlet");
+                        response.sendRedirect("createClass");
                         return;
                     }
                 }
