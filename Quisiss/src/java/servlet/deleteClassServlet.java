@@ -35,10 +35,12 @@ public class deleteClassServlet extends HttpServlet {
         if(id!=null){
             int classid = Integer.parseInt(id);
             cc.deleteClassById(classid);
-             request.getRequestDispatcher("createClassServlet").forward(request, response);
+            response.sendRedirect("createClass");
+            return;
+//             request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
         }
         
-        request.getRequestDispatcher("createClassServlet").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
