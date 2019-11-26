@@ -73,10 +73,6 @@
         <servlet-class>servlet.CreateQuestionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>createClassServlet</servlet-name>
-        <url-pattern>/createClassServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
     </servlet-mapping>
@@ -143,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>CreateQuestionServlet</servlet-name>
         <url-pattern>/CreateQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createClassServlet</servlet-name>
+        <url-pattern>/createClass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
