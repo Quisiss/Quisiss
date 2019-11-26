@@ -67,7 +67,7 @@ public class ChoiceQuizServlet extends HttpServlet {
             
         }
         
-        getServletContext().getRequestDispatcher("/WEB-INF/views/ChoiceQuiz.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/QuizChoice.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

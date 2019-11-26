@@ -34,6 +34,7 @@ public class SubjectiveQuizServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+<<<<<<< HEAD
         String question = request.getParameter("question");
         String ans = request.getParameter("ans");
         String questionid = request.getParameter("questionid");
@@ -60,6 +61,9 @@ public class SubjectiveQuizServlet extends HttpServlet {
         }
         
         getServletContext().getRequestDispatcher("/WEB-INF/views/SubjectiveQuiz.jsp").forward(request, response);
+=======
+        getServletContext().getRequestDispatcher("/WEB-INF/views/QuizPage.jsp").forward(request, response);
+>>>>>>> develop
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
