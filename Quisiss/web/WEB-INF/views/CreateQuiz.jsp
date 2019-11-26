@@ -47,6 +47,9 @@ li a:hover {
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
     <hr>
-    <button type="button"><a href="Home">Back to Home</a></button>
+    
+    <button><a href="ChoiceQuiz">Create Choice Quiz</a></button>
+    <button><a href="SubjectiveQuiz">Create Subjective Quiz</a></button><br><br>
+    <button type="button"><a href="createClass">Back to Class</a></button>
     </body>
 </html>

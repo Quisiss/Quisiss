@@ -38,7 +38,7 @@
                                 <a href="deleteQuiz?classId=${class.classId}&&quizId=${q.quizId}" class="btn btn-danger float-right">
                                     Delete
                                 </a>
-                                <a href="ManageClass?classId=${j.classId}" class="btn btn-warning float-right mr-sm-2">
+                                <a href="Quiz?classId=${j.classId}" class="btn btn-warning float-right mr-sm-2">
                                     Edit
                                 </a>
                             </div>

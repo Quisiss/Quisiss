@@ -64,6 +64,22 @@
         <servlet-name>deleteQuizServlet</servlet-name>
         <servlet-class>servlet.deleteQuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChoiceQuizServlet</servlet-name>
+        <servlet-class>servlet.ChoiceQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectiveQuizServlet</servlet-name>
+        <servlet-class>servlet.SubjectiveQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizServlet</servlet-name>
+        <servlet-class>servlet.QuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResultQuizServlet</servlet-name>
+        <servlet-class>servlet.ResultQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
@@ -127,6 +143,22 @@
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
         <url-pattern>/createClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChoiceQuizServlet</servlet-name>
+        <url-pattern>/ChoiceQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectiveQuizServlet</servlet-name>
+        <url-pattern>/SubjectiveQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizServlet</servlet-name>
+        <url-pattern>/Quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultQuizServlet</servlet-name>
+        <url-pattern>/ResultQuiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
