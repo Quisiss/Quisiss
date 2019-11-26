@@ -14,10 +14,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+                <title>JSP Page</title>
     </head>
     <body>
         <div class="container">
+            
             <h1>Quiz of ${class.className}</h1>
             <c:choose>
                 <c:when test="${quizs==[]}">
@@ -53,7 +54,7 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-            
+
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -74,7 +75,7 @@
                     </div>
                 </div>
             </div>
-                    ${message}
+            ${message}
             <h1>Student</h1>
             <c:forEach items="${student}" var="s">
                 <div class="card">

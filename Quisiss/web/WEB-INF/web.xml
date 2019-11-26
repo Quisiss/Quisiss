@@ -34,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>CreateQuizServlet</servlet-name>
-        <servlet-class>servlet.CreateQuizServlet</servlet-class>
+        <servlet-class>servlet.AddQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditUserNameServlet</servlet-name>
@@ -63,6 +63,14 @@
     <servlet>
         <servlet-name>deleteQuizServlet</servlet-name>
         <servlet-class>servlet.deleteQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuestionServlet</servlet-name>
+        <servlet-class>servlet.AddQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <servlet-class>servlet.CreateQuestionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createClassServlet</servlet-name>
@@ -127,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>deleteQuizServlet</servlet-name>
         <url-pattern>/deleteQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestionServlet</servlet-name>
+        <url-pattern>/AddQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <url-pattern>/CreateQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
