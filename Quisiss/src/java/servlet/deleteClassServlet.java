@@ -40,7 +40,7 @@ public class deleteClassServlet extends HttpServlet {
 //             request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
         }
         
-        request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
+        request.getRequestDispatcher("createClass").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
