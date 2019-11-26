@@ -7,17 +7,24 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Question;
+import model.Quiz;
+import model.Users;
+import model.controller.UsersController;
 import model.controller.classController;
+import model.controller.questionController;
+import model.controller.quizController;
 
 /**
  *
- * @author Lenovo-Y50
+ * @author Acer Nitro
  */
-public class deleteClassServlet extends HttpServlet {
+public class ChoiceQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +37,37 @@ public class deleteClassServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("classId");
-        classController cc = new classController();
-        if(id!=null){
-            int classid = Integer.parseInt(id);
-            cc.deleteClassById(classid);
-            response.sendRedirect("createClass");
-            return;
-//             request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
+        
+        String question = request.getParameter("question");
+        String ans1 = request.getParameter("ans1");
+        String ans2 = request.getParameter("ans2");
+        String ans3 = request.getParameter("ans3");
+        String ans4 = request.getParameter("ans4");
+        String finalans = request.getParameter("finalans");
+        String questionid = request.getParameter("questionid");
+        String classid = request.getParameter("classid");
+        String id = request.getParameter("id");
+        String msg = null;
+        
+        if(question.trim().isEmpty()||ans1.trim().isEmpty()||ans2.trim().isEmpty()||ans3.trim().isEmpty()||ans4.trim().isEmpty()){
+            msg = "Please Insert Question or Answer !!!";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/ChoiceQuiz.jsp").forward(request, response);
         }
         
-        request.getRequestDispatcher("createClass").forward(request, response);
+        int uid = Integer.valueOf(id);
+        int cid = Integer.valueOf(classid);
+        int qid = Integer.valueOf(questionid);
+        UsersController uc = new UsersController();
+        Users u = (Users) request.getSession().getAttribute("user");
+        questionController qc = new questionController();
+        ArrayList<Question> q = qc.getQuestionByQuizId(cid, uid);
+        
+        if(u!=null){
+            
+        }
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/views/QuizChoice.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

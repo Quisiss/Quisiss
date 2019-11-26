@@ -1,6 +1,6 @@
 <%-- 
-    Document   : QuizPage
-    Created on : Nov 16, 2019, 4:47:04 PM
+    Document   : QuizChoice
+    Created on : Nov 16, 2019, 11:33:06 PM
     Author     : Asus
 --%>
 
@@ -59,7 +59,7 @@
                 <div class="col col-1"></div>
                 <div class="col-12">
                     <center>
-                        <div class="card w-75" style="margin-top: 20px; text-align: center;">
+                        <div class="card w-100" style="margin-top: 20px; text-align: center;">
                             <div class="card-body">
                                 <h3 class="card-title">Quiz</h3>
                             </div>                  
@@ -72,9 +72,9 @@
             <br>
             <div class="row">
                 <div class="card-deck justify-content-center">
-                    <div class="card col-6" style="height:400px;">
+                    <div class="card col-9" style="height:400px;">
                         <div class="card-body">
-                            <h5 class="card-title">Question 1</h5>
+                            <h5 class="card-title">Question 1${param.questionid}</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>               
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Username</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
-                            <input type="submit" class="btn btn-outline-success" value="Finish"></input>
+                            <a href="ResultQuiz"><input type="submit" class="btn btn-outline-success" value="Finish"></input></a>
                         </div>
                     </div>
                 </div>  
@@ -108,3 +108,4 @@
         </div>
     </body>
 </html>
+

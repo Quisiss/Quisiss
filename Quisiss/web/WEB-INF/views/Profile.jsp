@@ -38,7 +38,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
-            <a class="navbar-brand" href="Home">Quisiss</a>
+            <a class="navbar-brand" href="createClass">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">

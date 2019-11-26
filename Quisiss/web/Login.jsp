@@ -40,7 +40,7 @@
                             <div class="col-12 justify-content-center">
                                 <form action="Login" method="post">
                                     <h2 class="mb-4 mt-0 text-center">Log in</h2>
-                                    <h5 style="color:#FFAE93;">${msg}</h5>
+                                    <h5 style="color: #ff794d;">${msg}</h5>
                                     <div class="form-group">
                                         <label for="username"><b>Username</b></label>
                                         <input type="text" class="form-control" placeholder="Username" name="username">

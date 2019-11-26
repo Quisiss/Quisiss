@@ -11,13 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.controller.classController;
 
 /**
  *
- * @author Lenovo-Y50
+ * @author Acer Nitro
  */
-public class deleteClassServlet extends HttpServlet {
+public class QuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +29,7 @@ public class deleteClassServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("classId");
-        classController cc = new classController();
-        if(id!=null){
-            int classid = Integer.parseInt(id);
-            cc.deleteClassById(classid);
-            response.sendRedirect("createClass");
-            return;
-//             request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
-        }
-        
-        request.getRequestDispatcher("createClass").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

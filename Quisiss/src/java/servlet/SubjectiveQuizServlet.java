@@ -7,17 +7,21 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.controller.classController;
+import model.Question;
+import model.Users;
+import model.controller.UsersController;
+import model.controller.questionController;
 
 /**
  *
- * @author Lenovo-Y50
+ * @author Acer Nitro
  */
-public class deleteClassServlet extends HttpServlet {
+public class SubjectiveQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +34,36 @@ public class deleteClassServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("classId");
-        classController cc = new classController();
-        if(id!=null){
-            int classid = Integer.parseInt(id);
-            cc.deleteClassById(classid);
-            response.sendRedirect("createClass");
-            return;
-//             request.getRequestDispatcher("/WEB-INF/views/class.jsp").forward(request, response);
+<<<<<<< HEAD
+        String question = request.getParameter("question");
+        String ans = request.getParameter("ans");
+        String questionid = request.getParameter("questionid");
+        String classid = request.getParameter("classid");
+        String id = request.getParameter("id");
+        String msg = null;
+        
+        if(question.trim().isEmpty()||ans.trim().isEmpty()){
+            msg = "Please Insert Question or Answer !!!";
+            request.setAttribute("msg", msg);
+            getServletContext().getRequestDispatcher("/WEB-INF/views/ChoiceQuiz.jsp").forward(request, response);
         }
         
-        request.getRequestDispatcher("createClass").forward(request, response);
+        int uid = Integer.valueOf(id);
+        int cid = Integer.valueOf(classid);
+        int qid = Integer.valueOf(questionid);
+        UsersController uc = new UsersController();
+        Users u = (Users) request.getSession().getAttribute("user");
+        questionController qc = new questionController();
+        ArrayList<Question> q = qc.getQuestionByQuizId(cid, uid);
+        
+        if(u!=null){
+            
+        }
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/views/SubjectiveQuiz.jsp").forward(request, response);
+=======
+        getServletContext().getRequestDispatcher("/WEB-INF/views/QuizPage.jsp").forward(request, response);
+>>>>>>> develop
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
