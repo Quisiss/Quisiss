@@ -31,28 +31,6 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
-            <a class="navbar-brand" href="createClass">Quisiss</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Exam">Exam </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="CreateQuiz">Create Quiz</a>
-                    </li>
-                </ul>              
-                <ul class="navbar-nav ml-md-auto">
-                    <span class="navbar-text">
-                        ${user.userName} |
-                    </span>
-                    <a href="Logout"><button class="btn btn-info btn-sm" style="margin:6px;">Logout</button></a>
-                </ul>    
-            </div>
-        </nav>
         <div class="container">
             <div class="row">
                 <div class="col col-1"></div>
@@ -63,7 +41,7 @@
                                 <h3 class="card-title">Quiz</h3>
                             </div>                  
                         </div>  
-                    <!--<h1 style="margin-top: 20px;">Quiz</h1>-->
+                        <!--<h1 style="margin-top: 20px;">Quiz</h1>-->
                     </center>
                 </div>
                 <div class="col col-1"></div>
@@ -75,6 +53,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Question 1</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>               
+                            <form action="" method="post" id="form1">
+                                <div class="input-group">
+                                    <textarea class="form-control" aria-label="With textarea" placeholder="Write your answer"></textarea>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="card col-2">
@@ -82,28 +65,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Username</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
-                            <input type="submit" class="btn btn-outline-success" value="Finish"></input>
+                            <input type="submit" class="btn btn-outline-success" value="Finish" form="form1"></input>
                         </div>
                     </div>
                 </div>  
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <nav style="padding-top: 20px;">
-                       <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>  
-                </div>              
-            </div>
+            </div>           
         </div>
     </body>
 </html>
