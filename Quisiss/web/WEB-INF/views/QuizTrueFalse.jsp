@@ -64,11 +64,11 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card col-2">
-                        <center><img src="../images/user1.png" class="card-img-top" alt="user" style="width:50%;margin-top: 20px;"></center>
+                    <div class="card col-2 text-center">
+                        <center><img src="images/user1.png" class="card-img-top" alt="user" style="width:50%;margin-top: 20px;"></center>
                         <div class="card-body">
-                            <h5 class="card-title">Username</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
+                            <h4 style="color:#ff1a75;">${user.userName}</h4>
+                            <h3 class="justify-content-center">00:00</h3>
                             <input type="submit" class="btn btn-outline-success" value="Finish" form="form1"></input>
                         </div>
                     </div>
