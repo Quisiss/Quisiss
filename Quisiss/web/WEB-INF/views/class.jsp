@@ -141,7 +141,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${j.className}</h5>
                             <p class="card-text">Own by : ${j.ownerId}</p>
-                            <a href="#" class="btn btn-primary">View class</a>
+                            <a href="ManageClass" class="btn btn-primary">View class</a>
                         </div>
                     </div>
 

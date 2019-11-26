@@ -29,7 +29,9 @@ public class ChoiceQuizServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
+        
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/views/ChoiceQuiz.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
