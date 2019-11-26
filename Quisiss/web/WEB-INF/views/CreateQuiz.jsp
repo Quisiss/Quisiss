@@ -47,6 +47,10 @@ li a:hover {
     <h3>Your ID : ${user.userId}</h3>
     <h3>Your Email : ${user.email}</h3>
     <hr>
-    <button type="button"><a href="Home">Back to Home</a></button>
+    <button type="button"><a href="">Back to Home</a></button>
+    <form action="ChoiceQuiz" method="post">
+     Question :  <input type="text" name="quiz">
+     Answer : <input type="text" name="answer">
+    </form>
     </body>
 </html>
