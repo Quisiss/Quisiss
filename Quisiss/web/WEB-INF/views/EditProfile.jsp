@@ -25,7 +25,9 @@
             body{
                 background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
-                height: 100vh;
+                height: 100%;
+                background-size: cover;
+                background-attachment: fixed;
             }
             .navbar-dark .navbar-text {
                 color:white;
