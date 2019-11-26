@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Username</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
-                            <input type="submit" class="btn btn-outline-success" value="Finish"></input>
+                            <a href="ResultQuiz"><input type="submit" class="btn btn-outline-success" value="Finish"></input></a>
                         </div>
                     </div>
                 </div>  

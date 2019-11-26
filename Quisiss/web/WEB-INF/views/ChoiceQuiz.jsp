@@ -74,7 +74,7 @@
                 <div class="card-deck justify-content-center">
                     <div class="card col-9" style="height:400px;">
                         <div class="card-body">
-                            <h5 class="card-title">Question 1</h5>
+                            <h5 class="card-title">Question 1${param.questionid}</h5>
                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>               
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Username</h5>
                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>                           
-                            <input type="submit" class="btn btn-outline-success" value="Finish"></input>
+                            <a href="ResultQuiz"><input type="submit" class="btn btn-outline-success" value="Finish"></input></a>
                         </div>
                     </div>
                 </div>  

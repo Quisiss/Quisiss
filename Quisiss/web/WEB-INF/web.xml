@@ -76,6 +76,10 @@
         <servlet-name>QuizServlet</servlet-name>
         <servlet-class>servlet.QuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResultQuizServlet</servlet-name>
+        <servlet-class>servlet.ResultQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>QuizServlet</servlet-name>
         <url-pattern>/Quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultQuizServlet</servlet-name>
+        <url-pattern>/ResultQuiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
