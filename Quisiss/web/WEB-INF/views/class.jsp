@@ -52,7 +52,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
-            <a class="navbar-brand" href="class">Quisiss</a>
+            <a class="navbar-brand" href="createClass">Quisiss</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -113,7 +113,7 @@
                 <c:forEach items="${ownClass}" var="j" >                   
                         <c:choose>
                             <c:when test="${j.ownerId==user.userId}">                           
-                            <div class="card col-3" style="margin:10px; ">
+                            <div class="card col-3" style="margin:10px;">
                                 <div class="card-body">
                                     <a href="deleteClass?classId=${j.classId}">
                                         <button type="button" class="close" aria-label="Close">
