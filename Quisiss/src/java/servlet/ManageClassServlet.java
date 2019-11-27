@@ -60,14 +60,14 @@ public class ManageClassServlet extends HttpServlet {
                 request.setAttribute("student", users);
             }else{
                 message = "not your class";
-                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);
+                getServletContext().getRequestDispatcher("/createClass").forward(request, response);
                 request.setAttribute("message", message);
                 return;
             }
         }else{
                 message = "not your class";
                 request.setAttribute("message1", message);
-                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);
+                getServletContext().getRequestDispatcher("/createClass").forward(request, response);
                 
                 return;
         }
