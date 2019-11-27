@@ -17,20 +17,47 @@
         <title>JSP Page</title>
         <style>
             body{
-                background-image: url("../images/pink_bg.png");
+                background-image: linear-gradient(to left top, #e098ae, #efa3a9, #f8b1a5, #fec0a4, #ffd0a6);
                 background-repeat: no-repeat;
-                background-size: 100%
+                height: 100%;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .navbar-dark .navbar-text {
+                color:white;
             }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4D3A4D;">
+            <a class="navbar-brand" href="createClass">Quisiss</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Exam">Exam </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CreateQuiz">Create Quiz</a>
+                    </li>
+                </ul>              
+                <ul class="navbar-nav ml-md-auto">
+                    <span class="navbar-text">
+                        ${user.userName} |
+                    </span>
+                    <a href="Logout"><button class="btn btn-info btn-sm" style="margin:6px;">Logout</button></a>
+                </ul>    
+            </div>
+        </nav>
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     ${message}
                     <h1>Create Question</h1>
-                    ${quiz.quizId}
-                    ${class.classId}
+                    Quiz Name : ${quiz.quizName} ,
+                    Class Name : ${class.className}
                     <form action="SubjectiveQuiz" method="post">
                         <div class="input-group">
                             <input type="hidden" name="quizId" value="${quiz.quizId}">
@@ -38,7 +65,8 @@
                             <textarea class="form-control" name="question" placeholder="Write Question"></textarea>
                             <input type="submit" class="btn btn-info">
                         </div>
-                    </form>  
+                    </form>
+                    <br><a href="createClass" class="btn btn-secondary">Back to Home</a>
                 </div>
             </div>
         </div>
