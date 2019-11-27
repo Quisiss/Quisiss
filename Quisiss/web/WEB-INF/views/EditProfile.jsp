@@ -51,13 +51,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="Exam">Exam </a>
+                        <a class="nav-link disabled" href="Exam">Exam </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="CreateQuiz">Create Quiz</a>
+                        <a class="nav-link disabled" href="CreateQuiz">Create Quiz</a>
                     </li>
                 </ul>              
                 <ul class="navbar-nav ml-md-auto">
