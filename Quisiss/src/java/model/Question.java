@@ -23,6 +23,18 @@ public class Question {
         this.answer = answer;
         this.classId = classId;
     }
+    public Question(int quizid, int questionid, String question, int classId) {
+        this.quizid = quizid;
+        this.questionid = questionid;
+        this.question = question;
+        this.classId = classId;
+    }
+    public Question(int quizid,String question, int classId) {
+        this.quizid = quizid;
+        this.question = question;
+        this.classId = classId;
+    }
+
 
     public int getClassId() {
         return classId;
