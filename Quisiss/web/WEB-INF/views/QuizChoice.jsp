@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,8 +33,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col col-1"></div>
+            <div class="row">               
                 <div class="col-12">
                     <center>
                         <div class="card w-75" style="margin-top: 20px; text-align: center;">
@@ -41,35 +41,39 @@
                                 <h3 class="card-title">Quiz</h3>
                             </div>                  
                         </div>  
-                        <!--<h1 style="margin-top: 20px;">Quiz</h1>-->
                     </center>
-                </div>
-                <div class="col col-1"></div>
+                </div>               
             </div>
             <br>
-            <div class="row">
-                <div class="card-deck justify-content-center">
-                    <div class="card col-6" style="height:400px;">
-                        <div class="card-body">
-                            <h5 class="card-title">Question 1</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>               
-                            <form action="" method="post" id="form1">
-                                    <input type="radio" name="word" value="a"> a<br>
-                                    <input type="radio" name="word" value="b"> b<br>
-                                    <input type="radio" name="word" value="c"> c<br>
-                            </form>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="card col-6 mr-4 p-2" style="height:auto;">
+                    <div class="card-body">
+                        <form action="FinishQuiz" method="post" id="form1">
+                            <c:forEach var="i" items="${question}">
+
+                                <input type="hidden" name="classId" value="${intclassId}">
+                                <input type="hidden" name="quizId" value="${quiz.quizId}">
+                                <input type="hidden" name="questionId" value="${i.questionid}">
+                                <h5 class="card-title">Question ${i.questionid}</h5>
+                                <p class="card-text">${i.question}</p>               
+                                <div class="input-group">
+                                    <textarea class="form-control" name="answer" placeholder="Write your answer"></textarea>
+                                </div>
+                                <hr>
+                            </c:forEach>  
+                        </form> 
                     </div>
-                    <div class="card col-2 text-center">
-                        <center><img src="images/user1.png" class="card-img-top" alt="user" style="width:70%;margin-top: 20px;"></center>
-                        <div class="card-body">
-                            <h4 style="color:#ff1a75;">${user.userName}</h4>
-                            <h3 class="justify-content-center">00:00</h3>
-                            <input type="submit" class="btn btn-outline-success" value="Finish" form="form1"></input>
-                        </div>
+                </div>
+                <div class="card col-2 text-center" style="height:24em;">
+                    <center><img src="images/user1.png" class="card-img-top" alt="user" style="width:70%;margin-top: 20px;"></center>
+                    <div class="card-body">
+                        <h4 style="color:#ff1a75;">${user.userName}</h4>
+                        Quiz id : ${quiz.quizId}
+                        <h3 class="justify-content-center">00:00</h3>
+                        <input type="submit" class="btn btn-outline-success" value="Finish" form="form1"></input>
                     </div>
-                </div>  
-            </div>
+                </div>
+            </div>           
         </div>
     </body>
 </html>
