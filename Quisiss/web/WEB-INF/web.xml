@@ -72,10 +72,22 @@
         <servlet-name>CreateQuestionServlet</servlet-name>
         <servlet-class>servlet.CreateQuestionServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>createClassServlet</servlet-name>
-        <url-pattern>/createClassServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>SubjectiveQuizServlet</servlet-name>
+        <servlet-class>servlet.SubjectiveQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewClassServlet</servlet-name>
+        <servlet-class>servlet.ViewClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizPageServlet</servlet-name>
+        <servlet-class>servlet.QuizPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinishQuizServlet</servlet-name>
+        <servlet-class>servlet.FinishQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
@@ -144,9 +156,32 @@
         <servlet-name>CreateQuestionServlet</servlet-name>
         <url-pattern>/CreateQuestion</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createClassServlet</servlet-name>
+        <url-pattern>/createClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectiveQuizServlet</servlet-name>
+        <url-pattern>/SubjectiveQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewClassServlet</servlet-name>
+        <url-pattern>/ViewClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizPageServlet</servlet-name>
+        <url-pattern>/QuizPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinishQuizServlet</servlet-name>
+        <url-pattern>/FinishQuiz</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>Login.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
