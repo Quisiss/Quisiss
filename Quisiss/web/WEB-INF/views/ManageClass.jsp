@@ -47,6 +47,7 @@
                     </c:forEach>
                     <div class="card">
                         <div class="card-header">
+                            <input type="hidden" name="classId" value="${class.classId}">
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal" > 
                                 add new quiz
                             </button>
@@ -64,6 +65,7 @@
                         <div class="modal-body">
                             <form action="addQuiz" method="post">
                                 <div class="form-group">
+                                    <input type="hidden" name="classId" value="${class.classId}">
                                     <label for="recipient-name" class="col-form-label">Name </label>
                                     <input type="text" class="form-control" id="recipient-name" name="quizName" value="${param.quizName}" required>
                                     <label for="recipient-name" class="col-form-label">Time(second) </label>
@@ -88,6 +90,5 @@
                 </div>
             </c:forEach>
         </div>
-
     </body>
 </html>
