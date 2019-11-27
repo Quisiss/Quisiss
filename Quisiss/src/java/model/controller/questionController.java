@@ -180,7 +180,6 @@ public class questionController {
             ps.executeUpdate();
             ArrayList<Question> question = quc.getQuestionByQuizId(classid, quizid);
             if(question.size()<=0){
-                System.out.println("5555");
                 Classroom c = cc.getClassroomById(classid);
                 qc.deleteQuizById(c, quizid);
             }else{
@@ -194,6 +193,7 @@ public class questionController {
             }
             System.out.println("77777");
             System.out.println("55555" + quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid1));
+            System.out.println(quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid1));
             classc.deleteChoiceByQuestionId(quc.getQuestionById(qc.getQuizById(cc.getClassroomById(classid), quizid), questionid1));
         } catch (SQLException ex) {
             Logger.getLogger(questionController.class.getName()).log(Level.SEVERE, null, ex);
@@ -239,5 +239,9 @@ public class questionController {
         //System.out.println(qc.getNewQuestionId(1)); 
         //System.out.println(qc.getQuestionByQuizId(1,2));
         //System.out.println(qc.getAnswerByQuizId(1,1));
+    }
+
+    public Question getQuestionById(Question q, int quesId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

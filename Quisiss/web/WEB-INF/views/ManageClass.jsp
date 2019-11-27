@@ -39,7 +39,7 @@
                                 <a href="deleteQuiz?classId=${class.classId}&&quizId=${q.quizId}" class="btn btn-danger float-right">
                                     Delete
                                 </a>
-                                <a href="Quiz?classId=${j.classId}" class="btn btn-warning float-right mr-sm-2">
+                                <a href="EditQuiz?classId=${q.classId}&&quizId=${q.quizId}" class="btn btn-warning float-right mr-sm-2">
                                     Edit
                                 </a>
                             </div>
@@ -63,7 +63,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Create your new quiz on ${class.className}</h5>
                         </div>
                         <div class="modal-body">
-                            <form action="addQuiz" method="post">
+                            <form action="addQuiz" method="get">
                                 <div class="form-group">
                                     <input type="hidden" name="classId" value="${class.classId}">
                                     <label for="recipient-name" class="col-form-label">Name </label>

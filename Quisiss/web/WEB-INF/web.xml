@@ -88,6 +88,26 @@
         <servlet-name>FinishQuizServlet</servlet-name>
         <servlet-class>servlet.FinishQuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditQuizServlet</servlet-name>
+        <servlet-class>servlet.EditQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteQuestionServlet</servlet-name>
+        <servlet-class>servlet.DeleteQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DoingQuizServlet</servlet-name>
+        <servlet-class>servlet.DoingQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObjectiveQuizServlet</servlet-name>
+        <servlet-class>servlet.ObjectiveQuizServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createClassServlet</servlet-name>
+        <url-pattern>/createClassServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TermServlet</servlet-name>
         <url-pattern>/Term</url-pattern>
@@ -175,6 +195,22 @@
     <servlet-mapping>
         <servlet-name>FinishQuizServlet</servlet-name>
         <url-pattern>/FinishQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditQuizServlet</servlet-name>
+        <url-pattern>/EditQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteQuestionServlet</servlet-name>
+        <url-pattern>/DeleteQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoingQuizServlet</servlet-name>
+        <url-pattern>/DoingQuiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObjectiveQuizServlet</servlet-name>
+        <url-pattern>/ObjectiveQuiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

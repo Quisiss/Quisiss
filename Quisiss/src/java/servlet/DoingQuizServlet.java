@@ -8,19 +8,23 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Classroom;
+import model.Quiz;
+import model.Users;
+import model.controller.UsersController;
+import model.controller.classController;
+import model.controller.quizController;
 
 /**
  *
  * @author Lenovo-Y50
  */
-public class AddQuestionServlet extends HttpServlet {
+public class DoingQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,46 +37,35 @@ public class AddQuestionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int add = 0;
-        Classroom c = (Classroom) request.getAttribute("class");
-        int quizId = (int) request.getAttribute("quizId");
-        System.out.println(c);
-        System.out.println(quizId);
-        String preAdd = request.getParameter("add");
-        String prelist = request.getParameter("list");
-        System.out.println(prelist);
-        List<String> formList = new ArrayList<>(0);
-        if (prelist != null) {
-            System.out.println(prelist);
-            List<String> al = Arrays.asList(prelist.split("\\s*,\\s*"));
-            if(al.size()>0){
-                formList = new ArrayList<>(al);
-            }
-            else{
-                formList = new ArrayList<>(0);
-            }
-        }
-
-        if (formList == null) {
-            formList = new ArrayList<String>();
-        }
-
-        if (preAdd != null) {
-            add = Integer.parseInt(preAdd);
-            if (add == 1) {
-                int preint = formList.size() + 1;
-                String a = String.valueOf(preint);
-                System.out.println(formList.size());
-                formList.add(a);
-                System.out.println(formList.size());
-                request.setAttribute("list", formList);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
+        
+        String preClassId = request.getParameter("classId");
+        HttpSession session = request.getSession();
+       // Users u = (Users) session.getAttribute("user");
+        UsersController uc = new UsersController();
+        Users u = uc.findUsersById(1);
+        String message = null;
+        int classId = Integer.parseInt(preClassId);
+        classController cc = new classController();
+        quizController qc = new quizController();
+        Classroom c = cc.getClassroomById(classId);
+        if(c!=null){
+                ArrayList<Quiz> quizs = qc.getQuizByClassId(classId);
+                System.out.println(quizs);
+                if(quizs==null){
+                    message = "no quiz yet";
+                }   
+                System.out.println("55555");
+                request.setAttribute("message", message);
+                request.setAttribute("quizs", quizs);
+        }else{
+                message = "not your class";
+                request.setAttribute("message1", message);
+                getServletContext().getRequestDispatcher("/createClassServlet").forward(request, response);                
                 return;
-            }
         }
-        formList.add("1");
-        request.setAttribute("list", formList);
-        getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
+        System.out.println(c.getClassId());
+        request.setAttribute("class", c);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/DoingQuiz.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

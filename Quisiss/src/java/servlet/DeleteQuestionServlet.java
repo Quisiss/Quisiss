@@ -7,20 +7,22 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Classroom;
+import model.Question;
+import model.Quiz;
+import model.controller.classController;
+import model.controller.questionController;
+import model.controller.quizController;
 
 /**
  *
  * @author Lenovo-Y50
  */
-public class AddQuestionServlet extends HttpServlet {
+public class DeleteQuestionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,46 +35,26 @@ public class AddQuestionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int add = 0;
-        Classroom c = (Classroom) request.getAttribute("class");
-        int quizId = (int) request.getAttribute("quizId");
-        System.out.println(c);
+        System.out.println("test");
+        System.out.println("5555");
+        String preClassId = request.getParameter("classId");
+        System.out.println(preClassId);
+        int classId = Integer.parseInt(preClassId);
+        System.out.println(classId);
+        String preQuizId = request.getParameter("quizId");
+        System.out.println(preQuizId);
+        int quizId = Integer.parseInt(preQuizId);
         System.out.println(quizId);
-        String preAdd = request.getParameter("add");
-        String prelist = request.getParameter("list");
-        System.out.println(prelist);
-        List<String> formList = new ArrayList<>(0);
-        if (prelist != null) {
-            System.out.println(prelist);
-            List<String> al = Arrays.asList(prelist.split("\\s*,\\s*"));
-            if(al.size()>0){
-                formList = new ArrayList<>(al);
-            }
-            else{
-                formList = new ArrayList<>(0);
-            }
-        }
-
-        if (formList == null) {
-            formList = new ArrayList<String>();
-        }
-
-        if (preAdd != null) {
-            add = Integer.parseInt(preAdd);
-            if (add == 1) {
-                int preint = formList.size() + 1;
-                String a = String.valueOf(preint);
-                System.out.println(formList.size());
-                formList.add(a);
-                System.out.println(formList.size());
-                request.setAttribute("list", formList);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
-                return;
-            }
-        }
-        formList.add("1");
-        request.setAttribute("list", formList);
-        getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
+        String preQuesId = request.getParameter("questionId");
+        System.out.println(preQuesId);
+        int quesId = Integer.parseInt(preQuesId);
+        System.out.println(quesId);
+        questionController qc = new questionController();
+        qc.deleteQuestionById(classId, quizId, quesId);
+        quizController quizC = new quizController();
+        classController c = new classController();
+        System.out.println("666666");
+        getServletContext().getRequestDispatcher("/CreateQuestion").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
