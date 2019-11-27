@@ -53,7 +53,7 @@ public class quizController {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Quiz q = new Quiz(rs.getInt("classId"), rs.getInt("quizId"), rs.getString("quizName"), rs.getInt("quizTime"));
+                Quiz q = new Quiz(rs.getInt("classId"), rs.getInt("quizId"), rs.getString("quizName"), rs.getInt("quizTime"),rs.getString("type"));
                 quizs.add(q);
             }
             return quizs;
@@ -104,16 +104,17 @@ public class quizController {
         return id + 1;
     }
 
-    public void createNewQuiz(Classroom c, String quizName, int time) {
+    public void createNewQuiz(Classroom c, String quizName, int time,String type) {
         try {
             quizController qc = new quizController();
             conn = BuildConnection.getConnection();
-            String statement = "insert into quiz(classid,quizid,quizname,quiztime) values (?,?,?,?)";
+            String statement = "insert into quiz(classid,quizid,quizname,quiztime,type) values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(statement);
             ps.setInt(1, c.getClassId());
             ps.setInt(2, qc.getNewQuizId(c));
             ps.setString(3, quizName);
             ps.setInt(4, time);
+            ps.setString(5, type);
             ps.executeUpdate();
             conn.close();
         } catch (SQLException ex) {

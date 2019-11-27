@@ -14,6 +14,23 @@ public class Quiz {
     private int quizId;
     private String quizName;
     private int quizTime;
+    private String type;
+
+    public Quiz(int classId, int quizId, String quizName, int quizTime, String type) {
+        this.classId = classId;
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.quizTime = quizTime;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Quiz(int classId, int quizId, String quizName, int quizTime) {
         this.classId = classId;

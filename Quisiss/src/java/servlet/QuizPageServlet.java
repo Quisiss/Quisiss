@@ -51,6 +51,7 @@ public class QuizPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         questionController qc = new questionController();
+        System.out.println("get");
         int classId = Integer.valueOf(request.getParameter("classId"));
         int quizId = Integer.valueOf(request.getParameter("quizId"));
         ArrayList<Question> ary = qc.getQuestionByQuizId(classId, quizId);

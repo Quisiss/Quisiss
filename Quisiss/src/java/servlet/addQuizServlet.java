@@ -49,13 +49,16 @@ public class addQuizServlet extends HttpServlet {
         int classId = Integer.parseInt(preClassId);
         String quizName = request.getParameter("quizName");
         String preQuizTime = request.getParameter("quizTime");
+        String type = request.getParameter("type");
         int quizTime = Integer.parseInt(preQuizTime);
         Classroom c = cc.getClassroomById(classId);
         if(c!=null){
             if(c.getOwnerId()== u.getUserId()){
-                qc.createNewQuiz(c, quizName, quizTime);
+                System.out.println("create");
+                qc.createNewQuiz(c, quizName, quizTime, type);
+                System.out.println("create");
                 Quiz q = qc.getQuizById(c, qc.getNewQuizId(c)-1);
-               request.setAttribute("quiz", q);
+                session.setAttribute("quiz", q);
             }else{
                 message = "not your class";
                 request.setAttribute("message", message);
@@ -63,8 +66,11 @@ public class addQuizServlet extends HttpServlet {
                 return;
             }
         }
-        request.setAttribute("class", c);
-        getServletContext().getRequestDispatcher("/SubjectiveQuiz").forward(request, response);
+        if(type.endsWith("subjective")){
+            getServletContext().getRequestDispatcher("/SubjectiveQuiz").forward(request, response);
+        }
+        session.setAttribute("class", c);
+        //getServletContext().getRequestDispatcher("/SubjectiveQuiz").forward(request, response);
         getServletContext().getRequestDispatcher("/CreateQuestion").forward(request, response);
         
     }

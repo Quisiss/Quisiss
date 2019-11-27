@@ -50,13 +50,12 @@ public class DoingQuizServlet extends HttpServlet {
         Classroom c = cc.getClassroomById(classId);
         if(c!=null){
                 ArrayList<Quiz> quizs = qc.getQuizByClassId(classId);
-                System.out.println(quizs);
                 if(quizs==null){
                     message = "no quiz yet";
                 }   
-                System.out.println("55555");
                 request.setAttribute("message", message);
                 request.setAttribute("quizs", quizs);
+                System.out.println("QUIZZZ : " + quizs.get(1).getType());
         }else{
                 message = "not your class";
                 request.setAttribute("message1", message);

@@ -49,6 +49,8 @@ public class SubjectiveQuizServlet extends HttpServlet {
         }
         session.setAttribute("class", c);
         session.setAttribute("quiz", quiz);
+        System.out.println(c);
+        System.out.println(quiz);
         String question = request.getParameter("question");
         if (question == null || quiz == null || c == null) {
             request.setAttribute("message", "Please enter question");
@@ -57,6 +59,7 @@ public class SubjectiveQuizServlet extends HttpServlet {
         questionController qc = new questionController();
         Question q = new Question(quiz.getQuizId(), qc.getNewQuestionId(quiz.getQuizId(), quiz.getClassId()), question,quiz.getClassId());
         qc.createNewQuestion(quiz.getQuizId(), question, null, quiz.getClassId());
+        System.out.println("createee");
         request.setAttribute("message", "CREATED!");
         getServletContext().getRequestDispatcher("/WEB-INF/views/SubjectiveQuiz.jsp").forward(request, response);
 
