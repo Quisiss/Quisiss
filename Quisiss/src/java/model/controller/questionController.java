@@ -200,6 +200,24 @@ public class questionController {
         }
     }
     
+    /*public void createNewQuestionForAnwser(int quizId, String question, int classId) {
+        try {
+            questionController qc = new questionController();
+            conn = BuildConnection.getConnection();
+            String statement = "insert into question(quizid,questionid,question,answer,classid) values (?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(statement);
+            ps.setInt(1,quizId);
+            ps.setInt(2, qc.getNewQuestionId(q.getQuizid(),q.getClassId()));
+            ps.setString(3, question);
+            ps.setString(4, null);
+            ps.setInt(5, classId);
+            ps.executeUpdate();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(quizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
+    
     public static void main(String[] args) {
         classController cc = new classController();
         questionController qc = new questionController();
@@ -212,6 +230,8 @@ public class questionController {
         //qc.deleteQuestionByQuizId(1, 1);
         //qc.deleteQuestionByClassId(3);
         qc.createNewQuestion(2, "questionaddtest1", "d",2);
+      //  Question q = new Question(1, "question", 2);
+        //qc.createNewQuestionForAnwser(q);
         //qc.deleteQuestionById(2, 2, 1);
 //        Question ques = qc.getQuestionById(qq, 2);
 //        System.out.println(ques.getQuestionid());
