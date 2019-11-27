@@ -46,6 +46,26 @@ public class ChoiceController {
         }
         return null;
     }
+    
+    public ArrayList<Choice> getChoiceByQuizId(Quiz q) {
+        questionController qc = new questionController();
+        ArrayList<Choice> choices = new ArrayList();
+        try {
+            conn = BuildConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from choice where classid = ? and quizid = ?");
+            ps.setInt(1, q.getClassId());
+            ps.setInt(2, q.getQuizId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Choice c = new Choice(rs.getInt("questionid"), rs.getInt("quizid"), rs.getString("choiceid"), rs.getInt("classid"), rs.getString("choice"));
+                choices.add(c);
+            }
+            return choices;
+        } catch (SQLException ex) {
+            Logger.getLogger(ChoiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public void addNewChoice(Question q, String choiceid, String choice) {
         try {
@@ -187,17 +207,12 @@ public class ChoiceController {
         classController cc = new classController();
         questionController qc = new questionController();
         quizController q = new quizController();
-        Classroom c = cc.getClassroomById(2);
+        Classroom c = cc.getClassroomById(8);
         Quiz qq = q.getQuizById(c, 1);
         Question ques = qc.getQuestionById(qq, 1);
-        chc.addNewChoice(ques, "a", "wtf1");
-        chc.addNewChoice(ques, "b", "is1");
-        chc.addNewChoice(ques, "c", "this1");
-        ArrayList<Choice> c1 = chc.getChoiceByQuestionId(ques);
+        ArrayList<Choice> c1 = chc.getChoiceByQuizId(qq);
         for (int i = 0; i < c1.size(); i++) {
             System.out.println(c1.get(i).getChoiceId() + c1.get(i).getChoice());
         }
-        //chc.deleteChoiceById(ques, "a");
-        //chc.deleteChoiceByQuestionId(ques);
     }
 }

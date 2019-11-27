@@ -54,8 +54,8 @@ public class addQuizServlet extends HttpServlet {
         if(c!=null){
             if(c.getOwnerId()== u.getUserId()){
                 qc.createNewQuiz(c, quizName, quizTime);
-                Quiz quiz = qc.getQuizById(c, qc.getNewQuizId(c)-1);
-                request.setAttribute("quiz", quiz);
+                Quiz q = qc.getQuizById(c, qc.getNewQuizId(c)-1);
+               request.setAttribute("quiz", q);
             }else{
                 message = "not your class";
                 request.setAttribute("message", message);
@@ -65,6 +65,7 @@ public class addQuizServlet extends HttpServlet {
         }
         request.setAttribute("class", c);
         getServletContext().getRequestDispatcher("/SubjectiveQuiz").forward(request, response);
+        getServletContext().getRequestDispatcher("/CreateQuestion").forward(request, response);
         
     }
 

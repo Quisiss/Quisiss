@@ -5,6 +5,12 @@
  */
 package model;
 
+import java.util.ArrayList;
+import model.controller.ChoiceController;
+import model.controller.classController;
+import model.controller.questionController;
+import model.controller.quizController;
+
 /**
  *
  * @author Lenovo-Y50
@@ -15,6 +21,7 @@ public class Question {
     private String question;
     private String answer;
     private int classId;
+    private ArrayList<Choice> choices;
 
     public Question(int quizid, int questionid, String question, String answer, int classId) {
         this.quizid = quizid;
@@ -23,6 +30,7 @@ public class Question {
         this.answer = answer;
         this.classId = classId;
     }
+    
     public Question(int quizid, int questionid, String question, int classId) {
         this.quizid = quizid;
         this.questionid = questionid;

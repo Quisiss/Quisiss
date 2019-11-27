@@ -141,6 +141,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${j.className}</h5>
                             <p class="card-text">Own by : ${j.ownerId}</p>
+                            <a href="DoingQuiz?classId=${j.classId}" class="btn btn-primary">Do a quiz</a>
                             <a href="ViewClass?classId=${j.classId}" class="btn btn-primary">View class</a>
                         </div>
                     </div>

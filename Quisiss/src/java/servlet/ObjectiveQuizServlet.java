@@ -8,19 +8,27 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Choice;
 import model.Classroom;
+import model.Question;
+import model.Quiz;
+import model.Users;
+import model.controller.ChoiceController;
+import model.controller.UsersController;
+import model.controller.classController;
+import model.controller.questionController;
+import model.controller.quizController;
 
 /**
  *
  * @author Lenovo-Y50
  */
-public class AddQuestionServlet extends HttpServlet {
+public class ObjectiveQuizServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,46 +41,33 @@ public class AddQuestionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int add = 0;
-        Classroom c = (Classroom) request.getAttribute("class");
-        int quizId = (int) request.getAttribute("quizId");
-        System.out.println(c);
-        System.out.println(quizId);
-        String preAdd = request.getParameter("add");
-        String prelist = request.getParameter("list");
-        System.out.println(prelist);
-        List<String> formList = new ArrayList<>(0);
-        if (prelist != null) {
-            System.out.println(prelist);
-            List<String> al = Arrays.asList(prelist.split("\\s*,\\s*"));
-            if(al.size()>0){
-                formList = new ArrayList<>(al);
-            }
-            else{
-                formList = new ArrayList<>(0);
-            }
+        HttpSession session = request.getSession();
+        String preClassId = request.getParameter("classId");
+        String preQuizId = request.getParameter("quizId");
+        int classId = Integer.parseInt(preClassId);
+        int quizId = Integer.parseInt(preQuizId);
+        // Users u = (Users) session.getAttribute("user");
+        UsersController uc = new UsersController();
+        classController cc = new classController();
+        quizController qc = new quizController();
+        questionController quesc = new questionController();
+        ChoiceController choicec = new ChoiceController();
+        Users u = uc.findUsersById(1);
+        Classroom c = cc.getClassroomById(classId);
+        Quiz q = qc.getQuizById(c, quizId);
+        ArrayList<Question> questions = quesc.getQuestionByQuizId(classId, quizId);
+        if (questions != null) {
+            request.setAttribute("questions", questions);
         }
-
-        if (formList == null) {
-            formList = new ArrayList<String>();
+        ArrayList<Choice> choices = choicec.getChoiceByQuizId(q);
+        if (choices != null) {
+            request.setAttribute("choices", choices);
         }
-
-        if (preAdd != null) {
-            add = Integer.parseInt(preAdd);
-            if (add == 1) {
-                int preint = formList.size() + 1;
-                String a = String.valueOf(preint);
-                System.out.println(formList.size());
-                formList.add(a);
-                System.out.println(formList.size());
-                request.setAttribute("list", formList);
-                getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
-                return;
-            }
-        }
-        formList.add("1");
-        request.setAttribute("list", formList);
-        getServletContext().getRequestDispatcher("/WEB-INF/views/CreateQuiz.jsp").forward(request, response);
+        request.setAttribute("quiz", q);
+        request.setAttribute("class", c);
+        System.out.println(questions);
+        System.out.println(choices);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/ObjectiveQuiz.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
